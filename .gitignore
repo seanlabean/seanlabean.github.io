@@ -1,0 +1,11 @@
+# Development
+*example
+
+# CV .TeX output
+*.aux
+*.bbl
+*.bib
+*.blg
+*.dvi
+*.out
+*.ps
