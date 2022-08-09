@@ -3,6 +3,8 @@
 
 # CV .TeX output
 *.aux
+*.log
+*.synctex.gz
 *.bbl
 *.bib
 *.blg
