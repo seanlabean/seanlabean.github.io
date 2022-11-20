@@ -11,3 +11,6 @@
 *.dvi
 *.out
 *.ps
+
+# LaTeX style modues
+*.sty
