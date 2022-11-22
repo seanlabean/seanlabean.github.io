@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, inital-scale=1"/><link href="../links/main.css" type="text/css" rel="stylesheet"/><link href="../media/icon/asterix.png" type="image/png" rel="shortcut icon"/>
+    <title>S. C. Lewis &mdash; knowledge</title>
+  </head>
+  <body>
+    <header><a href="home.html"><img alt="Serving" src="../media/icon/henge.png" width="90" height="70"></a></header>
+    <nav>
+      <ul>
+        <li><a href="journal.html">journal</a></li>
+        <li><a href="research.html" class="parent">research</a></li>
+        <li><a href="hobbies.html">hobbies</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+      <ul>
+        <li><a href="astro.html">astro</a></li>
+        <li><a href="compsci.html" class="parent">compsci</a></li>
+        <li><a href="void.html">the void</a></li>
+      </ul>
+      <ul>
+        <li><a href="csknowledge.html" class="self">knowledge</a></li>
+        <li><a href="csprojects.html">projects</a></li>
+        <li><a href="mlbasics.html">ml-basics</a></li>
+        <li><a href="bootcamp.html">bootcamp</a></li>
+        <li><a href="encrypt.html">encryption</a></li>
+      </ul>
+    </nav>
+    <main>
+      <br>
+      <h2>HDF5 files</h2>
+      <p>
+        HDF5 (Hierarchical Data Format v.5) files are extremely efficient modes of data storage, creating a highly portable, accessible, and organized data structure. My work frequently requires me to access HDF5 file contents and has recently involved my creation of unique HDF5 files for performance testing purposes.
+      </p>
+      <p>
+        This script is built to create a bare-bones representation of the data structure in an AREPO output (specifically the cell Coordinates) using only the <kbd>numpy</kbd> and <kbd>h5py</kbd> Python libraries.  Result: Makes an hdf5 file with an array of three 3D coordinates and associated densities. HDF5 structure - {file_name}/PartType0/Coordinates and {file_name}/PartType0/Density. 
+        <br>
+<pre>
+<code>
+  import numpy as np
+  import h5py                                                                                                     
+  
+  coords = np.zeros((4,3))
+  dens = np.zeros(4)
+      
+  coords[0] = [307.58379038431644, 296.06670264057715, 300.0282243435139]
+  coords[1] = [307.58379038431644, 296.06670264057715, 300.0282243435139]
+  coords[2] = [306.8695046700308,  295.3524169262915, 300.0282243435139]
+  coords[3] = [306.8695046700308,  295.3524169262915, 300.0282243435139]
+  
+  dens[0] = 1.0e-21
+  dens[1] = 1.0e-21
+  dens[2] = 1.0e-19
+  dens[3] = 1.0e-19
+  
+  f = h5py.File('voramr_test.hdf5', 'w')
+  group = f.create_group('PartType0')
+  dset = group.create_dataset('Coordinates', data = coords, dtype = 'd')
+  dset = group.create_dataset('Density', data = dens, dtype = 'd')
+</code>
+</pre>
+    </p>
+    </main>
+  <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2022 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
+  </body>
+</html>
