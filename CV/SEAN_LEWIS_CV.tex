@@ -27,8 +27,8 @@
 \name{Sean C. Lewis} % Name
 
 
-\address{Disque Hall, Office No. 808 \\ 32 S. 32$^{\rm nd}$ St. \\ Philadelphia, PA 19104, USA} % Address
-\address{+1~$\cdot$~(408)~$\cdot$~470~$\cdot$~0668 \\ \href{mailto:scl63@drexel.edu}{sean.christian.lewis@drexel.edu}} % Phone number and email
+\address{Philadelphia, PA 19104, USA} % Address
+\address{\href{mailto:scl63@drexel.edu}{sean.christian.lewis@drexel.edu}} % Phone number and email
 \address{Ph.D. Candidate \\ Deptartment of Physics \\ Drexel University } % Title
 
 \pagenumbering{roman}
@@ -44,7 +44,7 @@
 
 \begin{rSection}{Research Interests}
 
-\textbf{Computational astrophysics}, including general relativity, gravitational lensing, modified gravity, large-scale structure, 21\,cm cosmology, dark energy, inflation, dark matter, radio astronomy, and gravitational waves. 
+\textbf{Computational astrophysics}, including the formation of evolution of star clusters, the impact of massive stars and stellar feedback, and software development for migrating astrophysical simulation codebases.
 
 \end{rSection}
 
@@ -73,7 +73,7 @@
 \begin{rSection}{Positions Held}
 
 \textbf{Drexel University} \hfill {2017 -- Present} \\
-\textit{Doctoral Teaching Fellow; Research Fellow}\\
+\textit{Teaching Fellow; Research Fellow}\\
 Department of Physics
 
 \textbf{California Polytechnic State University} \hfill {2015 -- 2016}\\
@@ -103,7 +103,7 @@ Department of Physics
 \begin{description}[leftmargin=8em, style=nextline]
 
 \item[\textnormal{2021-Present}] \textbf{Hydrodynamical Simulation Data Structure Conversion}\\
-  Developed a novel software technique for transferring simulation data from a Voronoi Mesh data structure to a block-based adaptively refined grid structure.
+  Developed a novel software technique for transferring simulation data from a Voronoi mesh data structure to a block-based adaptively refined grid structure utilizing matrix manipulation and interpolation.
 
 \item[\textnormal{2018-Present}] \textbf{Early Forming Massive Stars}\\
   Developed a controlled experiment using the the high performance coupled magnetoydrodynamic, radiation, and N-body software suite Torch to determine the effects of the formation time of very massive stars, an under-tested parameter space.
@@ -205,10 +205,12 @@ Department of Physics
 \begin{rSection}{Conferences and Talks}
 
 \textbf{Contributed Talks}\\
-``Hybrid analytic image modeling and image moments approach to gravitational lensing''\\
-\forceindent Public talk for my Phyics Ph.D. Candidacy Exam, Drexel University \hfill 4 Jun. 2020\\
-``Quantifying the Effects of O-type Star Formation in Embedded Stellar Clusters''\\
+- ``The Effects of Early Forming Massive Stars \& A Novel Method for Inter-codebase Interpolation''
+\forceindent Clusters 2022, McMaster University \hfill 23 Aug. 2022\\
+- ``Quantifying the Effects of O-type Star Formation in Embedded Stellar Clusters''\\
 \forceindent Modest 21a Virtual Conference \hfill Jul. 2021\\
+- ``Using the MHD code FLASH to create a protoplanetary disk''\\
+\forceindent Phyics Ph.D. Candidacy Exam, Drexel University \hfill 4 Jun. 2019\\
 
 \textbf{Poster Presentations}\\
 - ``The Effects of Early Massive Star Formation: Gas Expulsion and Cluster Dynamics''\\
@@ -232,7 +234,7 @@ Department of Physics
 
 \begin{description}[leftmargin=10em, style=nextline]
 
-\item[\texttt{VorAMR}] A robust tool that utilizes \texttt{scipy} nearest neighbor interpolation and the \href{https://www.amusecode.org/}{AMUSE} software suite to convert output data from any Voronoi mesh data structure to input data for adaptive block-based structures.  \textit{Publicly available code written in Python}. \href{https://bitbucket.org/torch-sf/vor-amr/src/main/}{https://bitbucket.org/torch-sf/voramr/src/main}
+\item[\texttt{VorAMR}] A robust tool that utilizes \texttt{numpy} matrix manipulation, \texttt{scipy} nearest neighbor interpolation and the \href{https://www.amusecode.org/}{AMUSE} software suite to convert output data from any Voronoi mesh data structure to input data for adaptive block-based structures.  \textit{Publicly available code written in Python}. \href{https://bitbucket.org/torch-sf/vor-amr/src/main/}{https://bitbucket.org/torch-sf/voramr/src/main}
 
 \item[\texttt{PythonOpenMPI}] A generalizable utility for efficient task-based parallel programming using the \texttt{mpi4py} library. \textit{Publicly available code written in Python}.\\ \href{https://github.com/seanlabean/PythonOpenMPI}{https://github.com/seanlabean/PythonOpenMPI}
 
@@ -242,7 +244,7 @@ Department of Physics
 
 \begin{description}[leftmargin=10em, style=nextline]
 
-\item[\texttt{Torch}] A star cluster formation simulation software suite that couples the \href{https://www.amusecode.org/}{AMUSE} framework with the magnetohydrodynamical code  \href{https://flash.rochester.edu/site/flashcode/user_support/}{FLASH}.  \textit{Publicly available code written in Python}. \href{https://github.com/apetri/LensTools}{https://github.com/apetri/LensTools}
+\item[\texttt{Torch}] A star cluster formation simulation software suite that couples the \href{https://www.amusecode.org/}{AMUSE} framework with the magnetohydrodynamical code  \href{https://flash.rochester.edu/site/flashcode/user_support/}{FLASH}.  \textit{Publicly available code written in Python}. \href{https://bitbucket.org/torch-sf/torch/src/main/src/}{https://bitbucket.org/torch-sf/torch/src/main/src/}
 
 \end{description}
 
@@ -252,23 +254,19 @@ Department of Physics
 %	TEACHING SECTION
 %----------------------------------------------------------------------------------------
 
-\begin{rSection}{Teaching}
+%\begin{rSection}{Teaching}
 
-\textbf{Drexel University} \\ 
-\textit{Teaching Assistant} (Recitation and Lab Instructor)\\
-\forceindent PHYS 100, \textit{Preparation for Engineering Studies}  \hfill {Winter: 2021, 2020, 2019}\\
-\forceindent PHYS 152, \textit{Introductory Physics I}  \hfill {Spring: 2022, 2021, 2020, 2019}\\
-\forceindent PHYS 154, \textit{Introductory Physics III}  \hfill {Fall: 2021, 2020, 2019, 2018}\\
-\textit{Grader} \\
-\forceindent PHYS 131, \textit{Survey of the Universe} \hfill {Winter 2022}\\
-\forceindent PHYS 231, \textit{Introductory Astrophysics} \hfill {Winter 2022}\\
-\textit{Guest Lecturer} \\
-\forceindent PHYS 231, \textit{Introductory Astrophysics} \hfill {Winter 2022}\\
-\textbf{Stony Brook University} \\
-\textit{Lecturer}\\
-\forceindent  Della Pietra High School Applied Math Program \hfill {Spring 2017}
+%\textbf{Drexel University} \\ 
+%\textit{Teaching Fellow} (Recitation)\\
+%\forceindent PHYS 121, \textit{Physics for Art \& Design Students}\\  %\hfill {Winter: 2021, 2020, 2019}\\
+%\forceindent PHYS 101, \textit{Introduction to Calculus-based Physics I}\\  %\hfill {Spring: 2022, 2021, 2020, 2019}\\
+%\forceindent PHYS 102, \textit{Introduction to Calculus-based Physics II}\\
+%\forceindent PHYS 201, \textit{Introduction to Calculus-based Physics III}\\  %\hfill {Fall: 2021, 2020, 2019, 2018}\\
+%\textit{Grader} \\
+%\forceindent PHYS 131, \textit{Survey of the Universe}\\ %\hfill {Winter 2022}\\
+%\forceindent PHYS 231, \textit{Introductory Astrophysics}\\ %\hfill {Winter 2022}\\
 
-\end{rSection}
+%\end{rSection}
 
 %----------------------------------------------------------------------------------------
 %	PROFESSIONAL ACTIVITIES AND SERVICE SECTION
@@ -276,30 +274,30 @@ Department of Physics
 
 %\newpage %Just for now
 
-\begin{rSection}{Professional Activities and Service}
+%\begin{rSection}{Professional Activities and Service}
 
-\begin{description}[leftmargin=10em, style=nextline]
+%\begin{description}[leftmargin=10em, style=nextline]
 
-\item[Collaborations] External Collaborator, Dark Energy Survey (DES)\\
-  Member, Packed Ultra-wideband Mapping Array (PUMA) [Inactive]\\
-  Member, Baryon Mapping eXperiment (BMX) [Inactive]
+%\item[Collaborations] External Collaborator, Dark Energy Survey (DES)\\
+%  Member, Packed Ultra-wideband Mapping Array (PUMA) [Inactive]\\
+%  Member, Baryon Mapping eXperiment (BMX) [Inactive]
 
-\item[Working Groups] Member, DOE Cosmic Visions Dark Energy 21$\,$cm Working Group [Inactive]
+%\item[Working Groups] Member, DOE Cosmic Visions Dark Energy 21$\,$cm Working Group [Inactive]
 
 %\item[Collaborations] Inactive member of the Large Synoptic Survey Telescope Dark Energy 
 % Science Collaboration (LSST-DESC)
 
-\end{description}
+%\end{description}
 
-\textbf{Outreach Activities}\\
-Invited to appear on the Drexel University Teaching Assistant Orientation Panel, as part of the Teaching Assistant Orientation and Preparation Course GRAD T580 (17 Sep. 2020).
+%\textbf{Outreach Activities}\\
+%Invited to appear on the Drexel University Teaching Assistant Orientation Panel, as part of the Teaching Assistant Orientation and Preparation Course GRAD T580 (17 Sep. 2020).
 
-Gave a physics demonstration at the Kaczmarczik Lecture Series Open House, hosted by the Drexel University Department of Physics (14 Nov. 2018).
+%Gave a physics demonstration at the Kaczmarczik Lecture Series Open House, hosted by the Drexel University Department of Physics (14 Nov. 2018).
 
-\textbf{Committee Work}\\
-Treasurer of the Drexel University Physics Graduate Student Association (2020 -- 2021).
+%\textbf{Committee Work}\\
+%Treasurer \& Event Coordinator of the Drexel Physics Graduate Student Association (2019 -- 2020).
 
-\end{rSection}
+%\end{rSection}
 
 
 %----------------------------------------------------------------------------------------
