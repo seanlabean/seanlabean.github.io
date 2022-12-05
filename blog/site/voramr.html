@@ -19,19 +19,31 @@
         <li><a href="void.html">the void</a></li>
       </ul>
       <ul>
-	<li><a href="clusters.html">star clusters</a></li>
+	      <li><a href="clusters.html">star clusters</a></li>
         <li><a href="voramr.html" class="self">voramr</a></li>
       </ul>
     </nav>
     <main>
-      <br>
-      <h2>VorAMR</h2>
+      <figure>
+        <img src="../media/refs/vornoi.jpeg">
+      </figure>
       <p>
-	In computational astrophysics, extraordinarily complicated software suites are required to simulate aspects of the universe. Generations of scientists will adopt, use, contribute to, and pass on their specialized simulation software of choice. A problem arises when enitre research groups become irreparably entwined with unique but isolated software. This can lead to highly unfortunate intellectual quagmires where computational advancements made in one software suite is difficult if not impossible to translate to a another suite due to the computational rigor required.
+        <code>VorAMR</code> is a software tool that I designed which converts data sets from one type of hydrodynamical software suite to another. Specifically, <code>VorAMR</code> takes output data from the Voronoi mesh code <code>AREPO</code> and interpolates the data into a adaptive block-based <code>FLASH</code> grid which is generated to best mimic the Voronoi structure.
+      </p>
+      <h3>Why <code>VorAMR</code> is important</h3>
+      <p>
+        <code>VorAMR</code> provides three obvious benefits to the domain of computational hydrodynamics. One is of general utility, the second is of special significance to my research field of star formation simulations, and the third is of philosophical and normative importance. 
       </p>
       <p>
-	The ability to translate between two ideologically and computationally separate simulation softwares is important because
+        From a utilitarian perspective, <b><code>VorAMR</code> provides a novel way to visualize Voronoi mesh-based hydrodynamical data.</b> Voronoi meshes are notoriously difficult to produce visualizations from and research groups will often rely on suboptimal approximations. A common method is to approximate each Voronoi mesh cell as a particle and visualize the data as one would SPH data. This is not ideal as one would lose all semblance of the original Voronoi mesh. Otherwise, researchers are restricted to voxelizing the entire mesh as a 3D render, a computationally intense process which still does not allow for simple projection or slice plots. On the other hand, visualizations such as slices and projections from AMR block-based data is much simpler. Since <code>VorAMR</code> interpolates Voronoi data into a AMR grid, my tool provides a way for researchers using Voronoi mesh codes to visualize their data in a way that approaches the original Voronoi structure without having to develop their own visualization tools or rely on suboptimal approximations.
+      </p>
       <p>
+        From the perspective of my personal research goals, <b><code>VorAMR</code> represents a critical linkage in the star cluster simulation pipeline which will allow my research group to initialize star cluster simulations using giant molecular cloud (GMC) initial conditions from galactic-scale simulations.</b> The star formation process is influenced by physics from an enormous range of length scales: galactic potential and outflows down to the dynamics and feedback from individual stars. A single star has significant physical influence on scales of 1e-5 parsecs or less, while a fully simulated galaxy is of the scale 1e5 parsecs. The range of length scales prohibits any one simulation from including all physical processes without significant approximations. For example, a simulation of an entire galaxy may include single particles that represent thousands or tens of thousands of stars. Or, a simulation of a single GMC may include a background galactic potential without actually simulating the galactic dynamics. My research group particularly simulates individual GMCs which then forms star clusters, because of the computational restriction, we are forced to initialize our GMCs with approximations. Typically we initialize a GMC as a perfect sphere of gas with a random velocity distribution. Ideally, we would use a GMC model that was generated under realistic galactic influences.  <code>VorAMR</code> accomplishes exactly this. My tool allows for the translation of data from galactic simulations computed using Voronoi mesh codes to AMR block-based codes like <a href="clusters.html"><code>Torch</code></a> thereby allowing for the simulation of cluster formation from GMCs that formed during realistic galactic simulations. 
+      </p>
+      <p>
+	      From a philosophical perspective, <b><code>VorAMR</code> provides an avenue for increased and desperately needed collaboration between entrenched research groups.</b> In computational astrophysics, extraordinarily complicated software suites are required to simulate aspects of the universe. Generations of scientists will adopt, use, contribute to, and pass on their specialized simulation software of choice. A problem arises when enitre research groups become irreparably entwined with unique but isolated software. This can lead to highly unfortunate intellectual quagmires where computational advancements made in one software suite is difficult if not impossible to translate to a another suite due to the computational rigor required. Normatively, I believe researchers should collaborate with each other and maximize the reach and spread of their data and computational techniques. Open source code is a brilliant example of this, but <code>VorAMR</code> goes one step further and enables groups to translate data into their own familiar frameworks without the trouble of learning a new software suite.
+      </p>
+      <h3>How <code>VorAMR</code> works</h3>
     </main>
   <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2022 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
   </body>
