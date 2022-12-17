@@ -28,6 +28,20 @@
     </nav>
     <main>
       <br>
+      <h2>Pickling</h2>
+      <p>
+        “Pickle” is a Python module that enables users to serialize data objects (things associated with a class on which methods can be called, see above)
+        <ul>
+          <li>To “serialize” means to convert data to a binary structure that is much more efficiently read and transferred by the computer.</li>
+          <li>This is essentially what hdf5 does, I believe, though at a much more reduced and user-accessible scale.</li>
+          <li>In Torch, pickle files are used to store the star masses and random states associated with all sink particles in a simulation.</li>
+        </ul>
+
+        How to open/read pickle file:
+<pre><code>import pickle
+{open_file} = pickle.load( open(“{file_name}”, “rb”) )
+</code></pre>
+      </p>
       <h2>HDF5 files</h2>
       <p>
         HDF5 (Hierarchical Data Format v.5) files are extremely efficient modes of data storage, creating a highly portable, accessible, and organized data structure. My work frequently requires me to access HDF5 file contents and has recently involved my creation of unique HDF5 files for performance testing purposes.
