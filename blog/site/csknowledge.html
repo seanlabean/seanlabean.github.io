@@ -28,6 +28,52 @@
     </nav>
     <main>
       <br>
+      <h2>Big O Notation</h2>
+      <p>
+        Big O communicates the behavior and complexity of an algorithm in relation to the data the algorithm operates on. Big O can refer to the time or space complexity of an algorithm. In the following examples, I focus on the time complexity  of algorithms operating on yellow/white pages, looking up business' and people's names and performing operations in various way. The Yellow pages will have unique names and unique phone number, while white pages have duplicate names and unique phone numbers. Both are sorted alphabetically.
+        </ul>
+      <h3>O(1)</h3> 
+      <ul>
+        <li>Given a person’s name and the page it’s on, find the phone number.</li>
+      </ul>
+      <h3>O(log n)</h3>
+      <ul>
+        <li>Given a person’s name, find their phone number by picking a random page about halfway through the portion of the book you haven’t searched yet and look for the name/number there. Then repeat the process about halfway through the part of the book where the person’s name lies. (Binary search)</li>
+	      <li>Nearest neighbor search.</li>
+      </ul>
+        
+      <h3>O(n)</h3>
+      <ul>
+        <li>Find all people whose phone numbers contain the digit “5" (Will have to check every name/number combo).</li>
+        <li>Given a phone number, find the person or business with that number</li>
+      </ul>
+
+Now given books with a specific name/address on cover of book. Each person/business gets a book
+
+      <h3>O(n log n)</h3>
+      <ul>
+        <li>Personalize each book by searching book for name via binary search, circle the name, write personal thank you note.</li>
+        <li>Combine binary search with a unique action for each (n) person/business.</li>
+      </ul>
+        
+      <h3>O(n^2)</h3>
+      <ul>
+        <li>A mistake occurred at the printers. Each personalized phonebook has an extra 0 printed at the end of each number. Use whiteout to correct.</li>
+        <li>Go through all (n) books and do (n) corrections in each book.</li>
+      </ul>
+        
+      <h3>O(n x n!)</h3>
+      <ul>
+        <li>Use robot to load books onto truck. Only one order is correct, but the robot loads books randomly, and only checks if the loaded order is correct and then has to unload all the books if the order is wrong.</li>
+      </ul>
+    
+      <h3>O(n^n)</h3>
+      <ul>
+        <li>You fix the robot so that it's loading things correctly. The next day, one of your co-workers plays a prank on you and wires the loading dock robot to the automated printing systems. Every time the robot goes to load an original book, the factory printer makes a duplicate run of all the phonebooks! Fortunately, the robot's bug-detection systems are sophisticated enough that the robot doesn't try printing even more copies when it encounters a duplicate book for loading, but it still has to load every original and duplicate book that's been printed.</li>
+      </ul>
+
+      </p>
+      <hr>
       <h2>Pickling</h2>
       <p>
         “Pickle” is a Python module that enables users to serialize data objects (things associated with a class on which methods can be called, see above)
@@ -42,6 +88,7 @@
 {open_file} = pickle.load( open(“{file_name}”, “rb”) )
 </code></pre>
       </p>
+      <hr>
       <h2>HDF5 files</h2>
       <p>
         HDF5 (Hierarchical Data Format v.5) files are extremely efficient modes of data storage, creating a highly portable, accessible, and organized data structure. My work frequently requires me to access HDF5 file contents and has recently involved my creation of unique HDF5 files for performance testing purposes.
