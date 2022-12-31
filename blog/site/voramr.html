@@ -44,6 +44,36 @@
 	      From a philosophical perspective, <b><code>VorAMR</code> provides an avenue for increased and desperately needed collaboration between entrenched research groups.</b> In computational astrophysics, extraordinarily complicated software suites are required to simulate aspects of the universe. Generations of scientists will adopt, use, contribute to, and pass on their specialized simulation software of choice. A problem arises when enitre research groups become irreparably entwined with unique but isolated software. This can lead to highly unfortunate intellectual quagmires where computational advancements made in one software suite is difficult if not impossible to translate to a another suite due to the computational rigor required. Normatively, I believe researchers should collaborate with each other and maximize the reach and spread of their data and computational techniques. Open source code is a brilliant example of this, but <code>VorAMR</code> goes one step further and enables groups to translate data into their own familiar frameworks without the trouble of learning a new software suite.
       </p>
       <h3>How <code>VorAMR</code> works</h3>
+      <p>
+        <code>VorAMR</code> is a collection of Python scripts (written by <a href='sclewis.html'>me</a>) and is built into the <a href="https://www.amusecode.org/" target="_out"><code>AMUSE</code> framework</a> and utilizes the Python-to-legacy-code interface therein. Through <code>AMUSE</code>, <code>VorAMR</code> communicates with the magnetohydrodynamic software suite <a href="https://flash.rochester.edu/site/flashcode/" target="_out"><code>FLASH</code></a> where I have modified a built-in unit test to construct a custom AMR grid. 
+      </p>
+      <figure>
+        <img src="../media/refs/voramr_logic.jpeg" alt="VorAMR logic path">
+      </figure>
+      <p>
+        The <code>VorAMR</code> logic path is relatively straight forward.
+        <ul>
+          <li>Voronoi cell position data sent to <code>FLASH</code>. Positions and field value (density, internal energy, velocity, etc.) data sent to <code>AMUSE</code>.</li>
+          <li><code>FLASH</code> views the Voronoi positional data as particles and builds an AMR grid that satisfies the refine-on-particle criteria. <code>AMUSE</code> constructs a KDtree with field values assigned to leaf nodes.</li>
+          <li>For each block data-structure, <code>FLASH</code> sends <code>AMUSE</code> an empty 16x16x16 matrix.</li>
+          <li><code>AMUSE</code> then passes the entire matrix into a N-dimensional nearest neighbor interpolation routine which maps field data corresponding to the closest KDtree leaf for each matrix cell, creating a 4 dimensional matrix of matrices.</li>
+          <li><code>AMUSE</code> sends the populated block matrix back to <code>FLASH</code> via the interface, mapping each field value to the cells within the <code>FLASH</code> AMR grid structure.</li>
+          <li><code>FLASH</code> outputs a refined AMR grid with all cells populated with field data in the <a href="https://www.hdfgroup.org/solutions/hdf5/" target="_out">HDF5 file format</a> which matches the structure expected by <code>Torch</code>.</li>
+        </ul>
+        refine-on-particle criteria; blocks
+      </p>
+      <figure>
+        <img src="../media/refs/voronoi_mesh.jpeg" alt="Voronoi mesh">
+      </figure>
+      <figure>
+        <img src="../media/refs/voronoi_centers.jpeg" alt="Voronoi centers">
+      </figure>
+      <figure>
+        <img src="../media/refs/amr_grid_from_voronoi.jpeg" alt="amr level 12 grid">
+      </figure>
+      <figure>
+        <img src="../media/refs/amr_lvl12.jpeg" alt="amr level 12 field data">
+      </figure>
     </main>
   <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2022 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
   </body>
