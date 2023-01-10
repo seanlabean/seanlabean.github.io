@@ -63,7 +63,12 @@
           <li><code>AMUSE</code> sends the populated block matrix back to <code>FLASH</code> via the interface, mapping each field value to the cells within the <code>FLASH</code> AMR grid structure.</li>
           <li><code>FLASH</code> outputs a refined AMR grid with all cells populated with field data in the <a href="https://www.hdfgroup.org/solutions/hdf5/" target="_out">HDF5 file format</a> which matches the structure expected by <code>Torch</code>.</li>
         </ul>
-        refine-on-particle criteria; blocks
+      </p>
+      <p>
+        The FLASH refine-on-particle criteria is tuned such that each data block (16x16x16 cells) contains 4096 Voronoi cell centers. A FLASH block will automatically refine or de-refine until the contained-particle criterion is satsisfied. The blocks of the AMR grid must also adhere to the restriction that refinement levels between neighboring blocks must be 1, 0, -1. This results in regions of the computational domain that are forced to over-refine such that they oversample low density Voronoi cells. This method also does not guarantee the high refinement Voronoi regions are interpolated into FLASH grid cells, as a block may contain 1 Voronoi region per data cell, but a single data cell may contain multiple Voronoi regions, leading to nonzero data-loss. 
+      </p>
+      <p>
+        As it stands, <code>VorAMR</code> is able to build and populate an AMR grid with 1-2% error in conserved global values (total mass, total internal energy, momentum).
       </p>
       <div class="row">
         <div class="column2">
@@ -81,6 +86,6 @@
         <img src="../media/refs/amr_lvl12.jpeg" alt="amr level 12 field data">
       </figure>
     </main>
-  <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2022 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
+  <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2023 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
   </body>
 </html>
