@@ -33,6 +33,9 @@
     </nav>
     <main>
       <br>
+      <figure>
+        <img src="../media/refs/slisp.jpeg"/>
+      </figure>
       <h2>Sartoris - the DIY Lisp</h2>
       <p>
         Lisp is a <a href='https://en.wikipedia.org/wiki/Lisp_(programming_language)' target="_out">family of languages</a> that treats all data structures as lists, even its source code is comprised of lists (hence the name <em>LIS</em>t <em>P</em>rocessor). Lisp is the second oldest programming language, preceded only by Fortran.
@@ -40,6 +43,10 @@
       <p>
         In this exercise, I use C to create my own Lisp. Originally, I embarked on this particularly difficult task because I wanted to add features to the open source photo editing tool <a href="https://wiki.xxiivv.com/site/ronin.html" target="_out">Ronin</a> which I began <a href="digital.html">playing around</a> with recently. Ronin is written and operated in its own version of Lisp which was prohibitively difficult for me to understand. I figure that learning to make my own will give me a leg up on how to make the appropriate edits and additions to the open source project. I will be following along Daniel Holden's <a href="https://www.buildyourownlisp.com/" target="_out">Build Your Own Lisp</a> project. I also suspect that <a href="https://wiki.xxiivv.com/site/devine_lu_linvega.html" target="_out">Ronin's creator</a> took this exact same route in the journey to create the tool.
       </p>
+      <h4>Developer's note</h4>
+      <article>
+        As of <code>01D03</code>, Sartoris remains incomplete. Simple arithmetic is possible with it and it supports other opcodes like mod, max, min as well as some simple list manipulation. Sartoris does not yet support variables, functions, or loops. Operationally, Sartoris lives within a complete and accessible REPL allowing for in-line editing and past commands cached in memory.
+      </article>
       <h3>What is a programming language</h3>
       <p>
         A programming language, like any other language, is a mutable combination of words or phrases that form some coherent structure which can be understood by entities other than the utterer. This ability to understand comes from the fact that language must follow a (mostly) self-consistent set of rules. I call this set rules a <em>grammar</em>. In our everyday languages, the use of a grammar rule set comes fairly naturally, but in programming I have to be more rigorous, computers are tough conversational partners.
