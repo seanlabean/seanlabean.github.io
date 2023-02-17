@@ -29,6 +29,7 @@
       <ul>
         <li><a href="diylisp.html">diy-lisp</a></li>
         <li><a href="svanne.html" class="self">svanne</a></li>
+        <li><a href="blackjack.html">minijack</a></li>
       </ul>
     </nav>
     <main>
@@ -52,7 +53,22 @@
         To calculate the day of the year, convert the month's letter to a value, starting with 0 for A, multiply by 14 and add the day of the month. For example, <code>J05</code> is equal to <code>(+ 5 (* 9 14))</code>, or 131.
       </p>
       <p>
+        I have made a script to calculate any Svannic date of the user's choosing.  to reveal the available input flags and required syntax.
         <a href="https://github.com/seanlabean/PythonProjects/tree/master/Svanne" target="_out">Github</a>
+        <pre>
+$ python svanne.py --help
+  usage: svanne.py [-h] [-i INCEPTION] [-d DATE] [-npg] [-nps]
+  optional arguments:
+    -h, --help            show this help message and exit
+    -i INCEPTION, --inception INCEPTION
+                          Inception year of repository.
+    -d DATE, --date DATE  
+                          Date to convert. Must be in dd-mm-yyyy format.
+    -npg, --no_print_gregorian
+                          Dont print Gregorian date format.
+    -nps, --no_print_svanne
+                          Dont print Svanne date format.
+        </pre>
       </p>
 
     </main>
