@@ -22,6 +22,28 @@
       <main>
         <h1>Change Log</h1>
         <p>This log uses the <a href="svanne.html">Svannic</a> date format.</p>
+        <h3>01F</h3>
+        <article>
+          
+          <p>
+            Traveled to Beacon, NY for a house-warming party for A's sister. It was an enjoyable time but a keen reminder that as I get older, the appeal of high-alcohol large social gatherings is swiftly leaving. I don't enjoy drinking, I don't enjoy the numbed way of speaking and dull topics of conversation. I probably would have had more fun if I had someone helping me with my static site generator project instead. No matter, the trip was still fun and worth the long drives.
+          </p>
+          <p>
+            <img src="../media/refs/anthracite.jpg" width=200px style="float:right">
+            At the shore of the Hudson, I found a piece of anthracite coal and used it as a medium to create a rubbing of a plaque along our trail. I was very pleased by this, and happy to share with others. I was also warmed by the fact that A seemed just as interested. Anthracite is the highest grade of coal and is what is used in firing trains, ships, and factories.</p>
+        </article>
+        <h3>01E</h3>
+        <article>
+          <p>
+            <a href="voramr.html">VorAMR</a> has been updated to now more accurately represent the initial grid conversion block structuer. Before, FLASH would immediately refine the entire grid to maximum, somewhat defeating the purpose of VorAMR's precision-focused resolution scheme. The fix was to scale down the refine-on-jeans-length criterion such that only 5 cells are required to resolve the jeans length rather than the default 24. Then, by removing all other refinement variables, the grid requirements became much more lax.           
+          </p>
+          <p>
+            I started to include modules that will allow a user to define a region-of-interest only within which will refinement be applied (though the field values will still be interpolated across the whole grid). This is on pause for now while I get the core of VorAMR going. Speaking of, the last major piece of VorAMR is to apply a static background potential to the computational domain. I was able to repurpose and customize some subroutines from a past project by Juan Ibañez-Mejia to apply any potential, but I still need to derive an anaytical solution from the particle potential provided in the input AREPO data. This is getting fairly problem-specific and I worry a little that such work really only will benefit a few users. Regardless, the functionality is easy to turn off. Determining how to add this background potential took me on yet another long goose chase through the internals of FLASH, only to discover a solution had existed right under my nose. I dont feel foolish though, I now know so much more about how FLASH operates and how Torch passes gravitational potential data around for the gas and stars.
+          </p>
+          <p>
+            I am continuing to interview for quantitative research positions. Thing are going well so far, and in an effort to divine some interesting projects to suggest to recruiters, I found a blog by Jonathan Kinley that discusses possible uses for artificial market data. This intrigued me as I had previously been thinking about how my research is, in essence, creating artificial astrophysical data to aid in the understanding of unobservable aspects of the universe. Can this be achieved in finance too? "Maybe" seems to be the firm answer. Will explore this more.
+          </p>
+        </article>
         <h3>01D</h3>
         <article>
           <p>
