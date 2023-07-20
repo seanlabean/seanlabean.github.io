@@ -126,7 +126,12 @@ Now given books with a specific name/address on cover of book. Each person/busin
       The <i>Header</i> of an HDF5 file often contains critical attributes that are accessed by programs such as data visualizers or simulation frameworks that inform the program whether certain algorithms need to be applied or what values should be passed to pre-existing methods. The attrubutes of an HDF5 file can be accessed and changed with relative ease using <c>GNU Bash</c> commands:
 <pre>
 <code>
+  $: echo "we can print all attribute data"
   $: h5dump -H -A {your_hdf5.hdf5}
+  $: echo "or just specific attributes"
+  $: h5dump -N AttrName {your_hdf5.hdf5}
+  $:
+  $: echo "with python and h5py we can modify any attribute"
   $: python
   
   import h5py
