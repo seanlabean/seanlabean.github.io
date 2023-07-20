@@ -122,6 +122,21 @@ Now given books with a specific name/address on cover of book. Each person/busin
 </code>
 </pre>
     </p>
+    <p>
+      The <i>Header</i> of an HDF5 file often contains critical attributes that are accessed by programs such as data visualizers or simulation frameworks that inform the program whether certain algorithms need to be applied or what values should be passed to pre-existing methods. The attrubutes of an HDF5 file can be accessed and changed with relative ease using <c>GNU Bash</c> commands:
+<pre>
+<code>
+  $: h5dump -H -A {your_hdf5.hdf5}
+  $: python
+  
+  import h5py
+  f = h5py.File('your_hdf5.hdf5', 'w')
+  header = f['Header']
+  header.attrs.modify('NameOfAttr', newValue)
+  f.close()
+</code>
+</pre>
+    </p>
     </main>
   <footer><span><a href="sclewis.html">Sean C. Lewis</a> &copy; 2023 &mdash; <a href="about.html">BY-NC-SA 4.0</a></span></footer>
   </body>
