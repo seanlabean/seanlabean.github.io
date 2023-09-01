@@ -32,7 +32,7 @@ main ul li { line-height:20px;margin-bottom:5px }
 main p { line-height:160% }
 main ::selection { background-color:aquamarine;color:#000;text-decoration:none }
 main q { font-family:serif;font-size:18px;font-style:italic;display:block;max-width:450px }
-main img, main svg { max-width:100%;height:auto;display:block;margin:0 0 30px }
+main img, main svg { max-width:100%;height:auto;display:block;margin:0 15px 15px }
 main pre { overflow:auto;background:#efefef;padding:10px;font-size:80%;margin-bottom:30px }
 main pre code { color:#777 }
 main code { white-space:pre}
