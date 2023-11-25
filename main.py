@@ -43,7 +43,7 @@ def write_nav(f, fn, cat_dict):
             f.write("<section>\n")
             f.write("<h2 class='self'>"+cat+"</h2>\n") if cat == match_cat else f.write("<h2><a id='"+cat+"'>"+cat+"</a></h2>\n")
             f.write("<ul class='nobull capital'>\n")
-            for page in pages: f.write("<li><a href='"+page+".html' class='self'>" + page + "</a></li>\n") \
+            for page in sorted(pages): f.write("<li><a href='"+page+".html' class='self'>" + page + "</a></li>\n") \
                 if page == fn else f.write("<li><a href='"+page+".html'>" + page + "</a></li>\n")
             f.write("</ul>\n")
             f.write("</section>\n")
@@ -113,9 +113,7 @@ def preparse_header(lex_f, fn, categories):
             except IndexError:
                 print(f"** {fn} - Incorrect header format.\nSetting category to 'no-proc'.\n")
                 categories.setdefault('no-proc', [])
-                categories['no-proc'].append(fn)
-            #categories[fn] = head[cat[0]].split(':')[-1].strip()
-            
+                categories['no-proc'].append(fn)    
         else:
             # no or erroneous head
             head = []
