@@ -31,7 +31,7 @@ def write_header(f, fn, head, cat_dict):
 def write_nav(f, fn, cat_dict):
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<nav><details open>\n")
-        f.write("<summary>Menu</summary>\n")
+        f.write("<summary>Navigator</summary>\n")
         f.write("<section class='site-nav'>\n")
         # 
         f.write("<section>\n<ul class='nobull capital'>\n<li><a href='home.html'>take me home</a></li></ul>\n</section>\n")
@@ -83,7 +83,7 @@ def parse_body(lex_f, fn, cat_dict):
         write_header(f, fn, head, cat_dict)
         write_nav(f, fn, cat_dict)
         for line in body_lines:
-            f.write(line) #f.write(markdown.markdown(line))
+            f.write(line)
         f.close()
 
 def write_footer(fn):
@@ -105,11 +105,17 @@ def preparse_header(lex_f, fn, categories):
         if len(ind_head) == 2:
             # we have a header
             head = inc_lines[ind_head[0] + 1:ind_head[1]]
-            cat = [i for i, x in enumerate(head) if x.split(':')[0] == 'category']
-            this_cat = head[cat[0]].split(':')[-1].strip()
-            categories.setdefault(this_cat, [])
+            try:
+                cat = [i for i, x in enumerate(head) if x.split(':')[0] == 'category']
+                this_cat = head[cat[0]].split(':')[-1].strip()
+                categories.setdefault(this_cat, [])
+                categories[head[cat[0]].split(':')[-1].strip()].append(fn)
+            except IndexError:
+                print(f"** {fn} - Incorrect header format.\nSetting category to 'no-proc'.\n")
+                categories.setdefault('no-proc', [])
+                categories['no-proc'].append(fn)
             #categories[fn] = head[cat[0]].split(':')[-1].strip()
-            categories[head[cat[0]].split(':')[-1].strip()].append(fn)
+            
         else:
             # no or erroneous head
             head = []
