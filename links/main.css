@@ -7,17 +7,19 @@ header { padding: 30px}
 nav { padding: 45px; float: left; }
 nav details summary { margin-bottom: 30px }
 nav .site-nav section { line-height: 22px; margin-bottom: 25px;}
-nav .site-nav section h2 { margin: 20px 0 20px 0; }
+nav .site-nav section h2 { margin: 20px 0 10px 0; }
 nav .site-nav section ul { margin: 0px; padding: 0px; }
-nav h2.self:before { content:"[" }
-nav h2.self:after { content:"]" }
-nav h2 { color:rgb(255, 85, 85);}
+/* nav h2.self:before { content:"[" }
+nav h2.self:after { content:"]" } */
+nav h2 { color:rgb(0, 0, 0);}
 nav a.self:before { content:"> " }
 /*nav a.self:after { content:">" }*/
 /* nav a.self { color:#fff} */
 
 main { padding: 15px; float:left; max-width:700px; }
 main img { width:100%; max-width: 700px; margin-bottom: 15px;}
+main a:before { content:"{" }
+main a:after { content:"}" }
 main > * { max-width: 600px; margin-bottom: 30px }
 
 
@@ -35,7 +37,9 @@ ul.nobull li {list-style-type: none}
 @media (prefers-color-scheme: dark) {
     body {background: #e2e2e2; color: rgb(0, 0, 0)}
     body header a img { filter: invert(1)}
-    body a { color: rgb(0, 0, 0);}
+    body a { color: rgb(46, 46, 46); }
+    body a:hover {color: rgb(255, 255, 255); background-color: #000000;}
+    body a.self:before { content:"> " }
     main > pre { background: white; color:#000}
     main > code { background:white; color:#000}
     body select { color: black; background-color: white;}
