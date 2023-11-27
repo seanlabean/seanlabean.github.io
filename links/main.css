@@ -17,7 +17,8 @@ nav a.self:before { content:"> " }
 /* nav a.self { color:#fff} */
 
 main { padding: 15px; float:left; max-width:700px; }
-main img { width:100%; max-width: 700px; margin-bottom: 15px;}
+main img { width:100%; max-width: 700px; margin-bottom: 5px;}
+main figure { margin-left: -2px; }
 main a:before { content:"{" }
 main a:after { content:"}" }
 main > * { max-width: 600px; margin-bottom: 30px }
