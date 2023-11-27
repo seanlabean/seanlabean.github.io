@@ -37,14 +37,14 @@ def write_nav(f, fn, cat_dict):
         f.write("<summary>Navigator</summary>\n")
         f.write("<section class='site-nav'>\n")
         # 
-        f.write("<section>\n<ul class='nobull capital'>\n<li><a href='home.html'>take me home</a></li></ul>\n</section>\n")
+        f.write("<section>\n<ul class='nobull'>\n<li><a href='home.html'>Back Home</a></li></ul>\n</section>\n")
         # find this filename as a value in the category dict. Return the category.
         match_cat = next((key for key, values in cat_dict.items() if fn in values), None)
         # make nav bar for each page. note which category the current page belongs AND mark current page in bar
         for cat, pages in cat_dict.items():
             if cat == 'no-proc': continue
             f.write("<section>\n")
-            f.write("<h2 class='self'>"+cat+"</h2>\n") if cat == match_cat else f.write("<h2><a id='"+cat+"'>"+cat+"</a></h2>\n")
+            f.write("<h2 class='self'>"+cat+"</h2>\n") if cat == match_cat else f.write("<h2>"+cat+"</h2>\n")
             f.write("<ul class='nobull capital'>\n")
             for page in sorted(pages): f.write("<li><a href='"+page+".html' class='self'>" + page + "</a></li>\n") \
                 if page == fn else f.write("<li><a href='"+page+".html'>" + page + "</a></li>\n")
