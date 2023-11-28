@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;esolangs</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;<img src='../media/refs/banner.png'></header><nav><details open>
+<summary>Navigator</summary>
+<section class='site-nav'>
+<section>
+<ul class='nobull'>
+<li><a href='home.html'>Back Home</a></li></ul>
+</section>
+<section>
+<h2>projects</h2>
+<ul class='nobull capital'>
+<li><a href='svanne.html'>svanne</a></li>
+</ul>
+</section>
+<section>
+<h2 class='self'>posts</h2>
+<ul class='nobull capital'>
+<li><a href='esolangs.html' class='self'>esolangs</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+</ul>
+</section>
+<section>
+<h2>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='movies.html'>movies</a></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='myself.html'>myself</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='changes.html'>changes</a></li>
+</ul>
+</section>
+</section>
+</details></nav>
+<!-- Generated file, do not edit -->
+
+<main>
+      <figure>
+        <img src="../media/refs/esolang_title.png">
+      </figure>
+      <h2>What is an esolang?</h2>
+      <figure>
+        <img src="../media/refs/Tengwar.svg" style="width:150px;float:right">
+      </figure>
+        <p>
+          An esoteric language (esolang) is a collection of logically consistent syntax and modes of expression with little to no intended purpose or a purpose so incredibly niche that its usefulness is constrained to the most unique of projects. An esolang that I'm sure nearly everyone is aware of, whether they've realized it or not, is <a href="https://en.wikipedia.org/wiki/Tengwar" target="_out">Tengwar</a> &mdash; one of Tolkien's Elvish languages and associated script. The language is esoteric in that it serves no purpose other than to give life to one specific ficticious world, and yet it is elegant and beautiful and (most importantly) consistent &mdash; a true language. This type of creativity: the creation of something for a limited but elegant purpose, truly fascinates me.
+        </p>
+        <p>
+          But what I am interested here is the creation and use of esoteric languages of the programming variety. Programming languages are different than written or spoken languages in that they only need to effectively and consistently convey commands to a computer, not necessarily to a person. Indeed, some esoteric coding languages are incredibly inconvienient for humans to decipher and others are even optimized to be as difficult as possilbe to read or type. There is a beauty of sorts in these unique and goofy languages, all of which at their core perform simple, cold, logical calculations flipping bits and bytes around, but manage to do so in truly creative ways.
+        </p>
+      <h2>Change the Problem</h2>
+      <figure>
+        <img src="../media/refs/urban_muller.png" style="width:250px;float:right">
+      </figure>
+      <p>
+        As with any creative pursuit, it's difficult to pinpoint which esolang was the first to be created, but 1993 is seen as the year in which several competing flavors of esoteric programming first made appearances. One of these primordial languages was <i>Brainfuck</i> created by Urban Müller. Müller was fascinated by the fundamental simplicity of computing. He realized that all computing could be performed by a few simple actions. Instead of designing a uniquely complicated, convoluted language which can readily and elegantly tackle all matters of programming problems, Müller reduced the problem of creating a language to its most lightweight digestible parts. As he recalled in a lecture two and a half decades after <i>Brainfuck's</i> inception: "When the problem doesn't fit the program, change the problem." And so Müller boiled the syntax and philosophy of programming down these four fundamental principals:
+      </p>
+        <ol>
+          <li>All numbers can be expressed by increments from zero.</li>
+          <li>All operators can be expressed by increments and decrements.</li>
+          <li>All variables can be expressed by stack (tape) positions.</li>
+          <li>Lambda calculus can be replaced by "while" functionality.</li>
+        </ol>
+      <p>
+        With these principals, <i>Brainfuck</i> has a single "tape" of memory and only 8 commands: shift pointer left/right, (inc/dec)rement, while loop, input, and output: <c>><+-[],.</c> <br>Printing the phrase "Hello World" in <i>Brainfuck</i> involves incrementing values on the tape to the letter's corresponding ascii values, outputing them one by one to the user. Here is what a Hello World program written in <i>Brainfuck</i> looks like, with annotations added for the output points of each printed character:<br>
+      </p>
+      <pre>
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>
+.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+H    E       LL   O  ,  ~ W   O      R        L   D   !</pre>
+      <p>
+        As it turns out, this set of simple commands is all that is necessary to emulate any programming problem, meaning <i>Brainfuck</i> is <a href="https://en.wikipedia.org/wiki/Turing_completeness" target="_out">Turing Complete</a> and can be used to emulate any other programming language. The name <i>Brainfuck</i> comes from the sensation experienced when trying to decipher what a <i>Brainfuck</i> program is trying to do, the language's simplicity results in a strangely obscure elegance, which in part resulted in its explosive popularity among niche programming circles. The <i>Brainfuck</i> compiler was also staggeringly small at only 240 bytes (some more recent versions shave off a few more) which added to the language's claims to esoteric innovation.
+      </p>
+      <q>When the problem doesn't fit the program, change the problem.</q>
+      <cite>Urban Müller</cite>
+      <p>
+        Urban Müller's <i>Brainfuck</i> instantly acquired admirers and prompted many to start designing their own languages. One inspired programmer was Chris Pressey, a self-described "itinerant composer of objectionable constructions". Pressey continued the pursuit of an unintelligible programming langauge which was a difficult as possible to write and understand, the result was <i>Befunge</i>. In all other languages (programming or not) lines of instructions or information are just that, lines. Whether it's read left to right as in English or typical programming languages like C, LISP, or even <i>Brainfuck</i>, or top to bottom like some written asiatic languages, all are fundamentally 1 dimensional. Pressey chanllanged this by including directional information in <i>Befunge</i> to dictate which cardinal direction the interpretor is meant to take. In other words, <i>Befunge</i> was the first 2 dimensional programming language which can be read top to bottom, left to right, right to left, and bottom to top. This unique interpretation structure along with criptic opcode definitions results in a particularly befuddling language. I am not going to pretend to understand how <i>Befunge</i> works, but I've included a "Hello World" program here and you can find more information about the language in the <a href="https://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown" target="_out">Befunge Docs</a>.
+      </p>
+      Befunge program to print "Hello, World!"
+      <pre>
+                   v
+  >v"Hello, world!"0<
+  ,:
+  ^_25*,@</pre>
+Befunge program to determine if a number is prime.
+<pre>
+  222p882**1+11p>133p                   >33g1+33p   22g33g- v>22g33g%#v_v
+   o                                                        >|
+    2                             v,,,,, ,,,,,.g22"is prime."<
+     1                            >    v^                             <
+                ^_@#-g11g22p22+1g22,*25<,,,,,,,,,,,,,.g22"is not prime."<</pre>
+    <h2>Feeding Art to a Machine</h2>
+    <p>
+      As with any ecosystem, the nature of programming esolangs morphed and branched over the decades. It's impossible to draw a single throughline establishing the most innovative or most inspiring languages, but it is possible to define rough catagories of languages. One catagory that I find beautiful and compelling is a class of languages where to write a program is to create art. This art, when fed to a computer, will be processed as any other set of commands would. 
+    </p>
+    <p>
+      Two languages whose programs emmulate the style of art are <i>Shakespeare</i> and <i>Chef</i>. Programs written in <i>Shakespeare</i>, as the name my suggest, take on the form of a Shakespearian play where the dialog of characters and play act/scene structure is interpreted into computational commands. Below is an example of a Truth Machine, a program which exits if the input is 0 and infinitely repeats if the input is 1, written in <i>Shakespeare</i>.
+    </p>
+    <!--p>A Truth Machine is a simple to implement program that showcases some basic capabilities of a language: input, output, decision, repetition, termination. If given an input of 0, the program terminates, if given an input of 1, the program indefinitely repeats.</p-->
+<pre>
+  The Truth Machine.
+
+  Romeo, a young man with a remarkable patience.
+  Juliet, a likewise young woman of remarkable grace.
+  
+                      Act I: The Truth.
+  
+                      Scene I: The Initialization.
+  
+  [Enter Romeo and Juliet]
+  
+                      Scene II: The Looping Heart.
+  
+  Romeo:
+    Listen to your heart!  Open your heart!
+  
+  Juliet:
+    Am I better than you?
+  
+  Romeo:
+    If so, let us proceed to scene II.
+  
+  [Exeunt]
+</pre>
+
+    <p>
+      <i>Chef</i> is a similar in that its programs emmulate some well-known written art, in this case: cooking recipes. Though the recipes are a bit unrealistic, like this Hellow World Souffle:
+    </p>
+
+<pre>
+  Hello World Souffle.
+  
+  Ingredients.
+  72 g haricot beans
+  101 eggs
+  108 g lard
+  111 cups oil
+  32 zucchinis
+  119 ml water
+  114 g red salmon
+  100 g dijon mustard
+  33 potatoes
+  
+  Method.
+  Put potatoes into the mixing bowl. Put dijon mustard into the mixing bowl. 
+  Put lard into the mixing bowl. Put red salmon into the mixing bowl. 
+  Put oil into the mixing bowl. Put water into the mixing bowl. 
+  Put zucchinis into the mixing bowl. Put oil into the mixing bowl. 
+  Put lard into the mixing bowl. Put lard into the mixing bowl. 
+  Put eggs into the mixing bowl. Put haricot beans into the mixing bowl. 
+  Liquefy contents of the mixing bowl. 
+  Pour contents of the mixing bowl into the baking dish.
+  
+  Serves 1.
+</pre>
+<figure>
+  <img src="../media/refs/Mar_Piet.png" style="width:170px;float:right">
+  <figcaption style="float:right">"Hello, World!" in <i>Piet</i>.</figcaption>
+</figure>
+    <p>
+      Still other languages stray away from a text-based mode of command dictation and instead opt for something purely visual. <i>Piet</i>, named for the Dutch Modernist painter Piet Mondrian, is one such language in which an interpretor pointer passes along the pixels of an image and performs operations based on the pixel's color. Yes, these images of blobs of color are in fact program scripts. As with all the other languages we've talked about so far, <i>Piet</i> has all the fundamental components and capabilities to perform any computation, from addition, to subtraction, to memory management, to interpreting other languages. Indeed, someone with way too much time on their hands used <i>Piet</i> to write a fully functional <i>Brainfuck</i> interpretor. By the way, in case the idea of constructing a unique esoteric programming language seems like an incredibly difficult thing to do (it is), both <i>Piet</i> and <i>Chef</i> were created by the same person, David Morgan-Mar. In addition to those two he's created seven others.
+    </p>
+<figure>
+  <img src="../media/refs/Piet_bf_interpretor.gif" style="width:400px">
+  <figcaption><i>Brainfuck</i> interpretor written in <i>Piet</i>.</figcaption>
+</figure>
+    <h2>A Language of Music</h2>
+    <figure>
+      <img src="../media/refs/100r.co.png" style="width:170px;float:right">
+    </figure>
+    <p>
+      Some esoteric programming languages transcend the bounds and behaviors of "complete" languages and are built for such specific applications that they lose the ability to perform the standard range of computational actions and yet are able to revolutionize entire industries. An industry that recently was subject to a titanic shift of this flavor was the "live coding" music scene. Live coding is the procedural production of music using computers and computer programs that can be edited on the fly during and throughout a DJ set and is extremely popular in underground electronic clubs and festivals. 
+    </p>
+    <p>
+      Live coding changed forever in 2015 when <a href="void.html">Devine Lu Linvega</a> created <i>Orca</i>. The intrigue of live coding performances comes from the surprising construction of dense, complex, and beautiful music sprouting from procedural software. Flavor and emotion makes a piece of "normal" music worth listening to and deriving those fundamental aspects of musical arts from a heartless machine requires true skill. Live coding can be done with many languages where MIDI output is produced programmatically and output to a synthesizer, modulated, and pumped out speakers. But what <i>Orca</i> did differently is that the construction and processing of the program itself is as much a visual performance as an auditory one. With <i>Orca</i> one can see the music notes originating from random number generators, being augmented by a string of commands, and MIDI information literally flying across the screen. 
+    </p>
+    <figure>
+      <img src="../media/refs/orca_cold.gif"/>
+    </figure>
+    <p>
+      <i>Orca</i>, and the live coding scence in general, is still niche with performances and sample tracks getting a few hundred views on Youtube. But I think it is one of the most impressive and creative tools ever made and I am in awe of all who partake. Keeping with tradition in these underground tech spaces, <i>Orca</i> is enitrely free to use.
+    </p>
+    <h2>Unique Limitations, Unique Solutions</h2>
+    <p>
+      There are some languages that are birthed from the fires of competition. Specifically, code golfing. Code golfing is surprisingly simple to understand: given a computational problem, write a script that solves it using the lowest number of characters possible. The idea is to have the input script to take up the smallest possible memory in text, where each character that is typed takes 1 byte of data. Take this example, using <i>Python</i>:
+    </p>
+<pre>
+  Write a function that takes an input integer and checks if it is prime.
+</pre>
+    <p>
+      Simple enough, just build a "prime checker". And if you're a halfway decent <i>Python</i> programmer, you might come up with an answer that looks something like this:
+    </p>
+<pre>
+  def is_prime(num):
+  if num == 1:
+     return False
+  for factor in range(2, num):
+      if num % factor == 0:
+         return False
+  return True
+</pre>
+    <p>And that's a great start, this program uses <code>159 bytes</code>. But you can do better. Remember, the goal is to have the fewest possible characters to solve the problem. Easy improvements could be to change the function name from <code>is_prime</code> to a single letter <code>p</code>. Great! That saves 7 bytes. You could do the same thing with all the other temporary variable names. Take out all the unecessary spaces too, a "space" is still a character costing 1 byte! But, a true <i>Python</i> code golfer can utilize tricks so infrequently seen that the perfectly optimized result doesn't even look like <i>Python</i> anymore:</p>
+<pre>
+  p=n=1
+  exec(“p*=n*n;n+=1;”*~-int(input()))
+  print(p%n)
+</pre>
+    <p><code>52 bytes</code>. Just like that, the "prime checker" program was reduced to one-third its original size. Some languages can do even better, like <i>Perl</i>:</p>
+<pre>
+  $_=2==grep$’%$_<1,//..$
+</pre>
+<p><code>26 bytes</code>. That's code golf in a nutshell.</p>
+<p>Out of this competition grew a unique class of esoteric languages whose only utility was to be a good golfing language. They could write short programs. That's it. They aren't necessarily fast, certainly are not legible, and are completely unintuitive. But that's why I love them.</p>
+
+<p>The same "prime checker" problem can be solved with <i>GolfScript</i>:</p>
+<pre>
+  ~.,{*.~+}*.*\%
+</pre>
+<p><code>14 bytes</code>.</p>
+<p>Other languages like <i>Pyth</i> take advantage of frequently occuring golfing problems to condense as much functionality into as single characters. To check if a number is prime or not:</p>
+<pre>
+  }QPQ
+</pre>
+<p><code>4 bytes</code>.</p>
+<p>And out of this arms race to create the most compact possible language, came philosophical art. On May 27th, 2014, an anonymous user posted their first and only entry to the <a href="https://esolangs.org/wiki/Main_Page" target="_out">Esolangs Wiki</a> proposing a new language, one that will forever and always be able to solve any computational problem in the fewest possible bytes: <i>MetaGolfScript</i>. The <i>MetaGolfScript</i> program to solve the "prime checker" problem is this:</p>
+<pre> </pre>
+<p><code>0 bytes</code></p>
+<p>Zero. Nothing. If you give <i>MetaGolfScript</i> an empty program file, it will check if a number is prime. Ok, technically that's missleading, <i>MetaGolfScript</i> isn't a magic language that can solve any computation in 0 bytes. It's actually an infinite family of languages, where there exists one langauge for each unique computational task. In this case, the language <i>MetaGolfScript-2579603820238107378666987055701286</i> solves the "prime checker" problem in 0 bytes. In this sense, our anonymous friend broke code golfing in 2014. No matter what problem is presented, there will always exist a <i>MetaGolfScript</i> language that can beat all others, solving the problem in 0 bytes. For that reason, <i>MetaGolfScript</i> is the only language to have received an outright ban from the official code golfing platform. I love the self-referential nature of this concept, to me it gives echoes of deeply revolutionary conjectures like Gödel's Incompleteness Theorem.</p>
+
+<h2>Try Before You Buy</h2>
+<figure>
+  <img src="../media/refs/tryitonline.png" style="width:170px;float:right">
+</figure>
+<p>Perhaps the most obstructive force in the esolang community and the primary reason it for so long remained a niche hobbiest community is the difficulty in building and running someone's custom language on your own machine. Esolangs aren't meant for mass production. They aren't like <i>Swift</i>, Apple's flagship language, ruled by a megacorporation with standards and practices to ensure the products built with it can run anywhere and everywhere. Esolangs are often entirely dependent on the software environments and hardware of the laptop they were developed on. But, as always, we cannot expect anything less than the best from the esolang community. A few solang hobbiests created <a href="https://tio.run/#" target="_out">Try It Online</a> a free and open source website where all registered esolangs, including all that I have mentioned in this blog, are ready and available for anyone to try out. This is why I love the esolang and Free and Open Source Software (FOSS) community, they come to their own rescue.</p>
+
+<h2>Final Words and Resources</h2>
+<p>Esoteric languages in literary media bring a sense of wonder and realness to imaginary worlds be it Elvish, Klingon, or the hundreds of lesser known. Esoteric programming languages bring a similar attitude to the world of computation, they invent new ways to think about how we talk to computers, they blur the line between program and art, they are forms of expression, useful or not. Esolangs represent our extraordinary ability as humans to construct a framework of rules to convey information while capturing the uniquness that is our species' ingenuity and artistic vision. Members of the esolang community are creators and artists, observers and thinkers, programmers and linguists and painters.</p>
+<p>I talked about many esoteric coding languages in this post, here is each language along with a link to their associated wiki page:</p>
+<ul>
+  <li><a href='https://esolangs.org/wiki/Brainfuck' target='_out'>Brainfuck</a></li>
+  <li><a href='https://esolangs.org/wiki/Befunge' target='_out'>Befunge</a></li>
+  <li><a href='https://esolangs.org/wiki/Shakespeare' target='_out'>Shakespeare</a></li>
+  <li><a href='https://esolangs.org/wiki/Chef' target='_out'>Chef</a></li>
+  <li><a href='https://esolangs.org/wiki/Piet' target='_out'>Piet</a></li>
+  <li><a href='https://esolangs.org/wiki/Orca' target='_out'>Orca</a></li>
+  <li><a href='https://esolangs.org/wiki/GolfScript' target='_out'>GolfScript</a></li>
+  <li><a href='https://esolangs.org/wiki/Pyth' target='_out'>Pyth</a></li>
+  <li><a href='https://esolangs.org/wiki/MetaGolfScript' target='_out'>MetaGolfScript</a></li>
+</ul>
+<p>This post was heavily inspired by the work and curation done by Hillel Wayne in their 2021 post which can be found <a href='hillelwayne.com/talks/esolangs/' target='_out'>here</a>.</p> Thank you.
+    </main>
+<footer><hr /><b>Sean C. Lewis</b> © 2023 — <a href='NULL' target='_blank'>BY-NC-SA 4.0</a> — Built with <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>
