@@ -16,7 +16,8 @@ nav a.self:before { content:"> " }
 /*nav a.self:after { content:">" }*/
 /* nav a.self { color:#fff} */
 
-main { padding: 15px; float:left; max-width:700px; }
+main { padding: 15px; float:left; max-width:700px;}
+main p { line-height: 1.5; }
 main img { width:100%; max-width: 700px; margin-bottom: 5px; padding:5px}
 main figure { margin-left: -2px; }
 main figcaption {margin-bottom: 15px; clear: both}
