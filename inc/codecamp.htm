@@ -1,0 +1,49 @@
+---
+category: projects
+---
+<main>
+<br>
+<h2>Python Bootcamp - For Drexel Graduate Students</h2>
+<h3>Overview</h3>
+<p>With this post, I hope you will be able to set yourself up with an up-to-date Python environment as well as gain some experience with <code>Git</code> to obtain the DrexelCodingLessons repository in which we will be going through daily lessons/reviews throughout the next week.</p>
+
+<h3>Operating System</h3>
+<p>I’m only familiar with MacOSX and using the Unix command line to navigate filesystems. If you are using Windows, you could download Windows Subsystem for Linux (WSL) from the Microsoft store as it will allow you to follow along with the Terminal commands I do (Ubuntu is the recommended one, it’s free and should do the job). This is not required at all, but just something to think about. If you haven’t used the command line at all, I recommend watching some beginners videos on Youtube and following along before we meet next week.</p>
+
+<p>For the Lesson you will need a few things installed.
+<ol>
+<li>A python3 environment (I think any 3.x version will do, I am using 3.7). Check your current python environment by typing the following command on the command line: <code>python –-version</code></li>
+<li>An installation of Jupyter Notebook.</li>
+<li>Install the Python packages: numpy, matplotlib, pandas, scipy</li>
+</ol>
+</p>
+
+<p>For those that don’t have these, you have a few choices in how you want to proceed. I recommend Anaconda, a package manager that is pretty easy to use and is expandable to include management of other languages like Julia and R if you ever decide to use them: <a href="https://www.anaconda.com/products/individual" target="_out">Link - Anaconda</a> scroll to the bottom for install options. Otherwise, you can install everything independently, installing a python3 version <a href="https://www.python.org/downloads/" target="_out">Link - Python</a> and jupyter notebooks using the pip command: <code>pip install jupyter notebook</code> (see here: <a href="https://jupyter.org/install" target="_out">Link - Jupyter</a>. To install the python packages, you can do this on the command line by issuing the pip command: <code>pip install numpy</code> for example. Please do this for each package I have listed.</p>
+
+<h3>Download the Lessons from Github</h3>
+<p>I have uploaded all of our lessons to github, please go to your command line (Terminal on Mac) and do: <code>git clone</code> <a href="https://github.com/seanlabean/DrexelCodingLessons" target="_out">Link - Github</a>.</p>
+
+<p>This will pull down all the lessons including code and pdfs and put it into a directory (folder) called ‘DrexelCodingLessons’. If this isn’t working for you for whatever reason, you can go to <a href="https://github.com/seanlabean/DrexelCodingLessons" target="_out">the github repo</a> and download everything as a ZIP. If you’re more savvy with git, feel free to fork the repository. We’ll have a git overview towards the end of the week where I’ll introduce basic concepts as it’s a vital skill in today’s age!</p>
+
+<h3>A Quick Navigation Test</h3>
+<p>
+<ol>
+<li>Go into the directory, look inside it to see directories called Lesson(1-7), Info, and two textbook pdfs on Python Programming. To do this on the command line, do:</li>
+<ul>
+<li><code>cd DrexelCodingLessons</code></li>
+<li><code>ls</code></li>
+</ul>
+<li>Go into the Info directory:</li>
+<ul>
+<li><code>cd Info</code></li>
+</ul>
+<li>Open the text file called UnixSystem.txt (you can use the text editor of your choice here):</li>
+<ul>
+<li>nano UnixSystem.txt</li>
+</ul>
+</ol>
+</p>
+<h3>A Quick Python Test</h3>
+<p>While still inside the Info directory, call python on the file names <code>python python_test.py</code>. This will execute what’s written in the file (which you can take a look at if you want the same way we did the text file) which is some print statements so you can see it’s working, and imports of the python packages we will need throughout the Lessons. This is basically just a rough way to check if you have installed the python packages correctly.
+</p>
+</main>
