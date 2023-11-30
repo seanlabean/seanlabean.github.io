@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;electronics</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;<img src='../media/refs/banner.png'></header><nav><details open>
+<summary>Navigator</summary>
+<section class='site-nav'>
+<section>
+<ul class='nobull'>
+<li><a href='home.html'>Back Home</a></li></ul>
+</section>
+<section>
+<h2>projects</h2>
+<ul class='nobull capital'>
+<li><a href='DIY_LISP.html'>DIY_LISP</a></li>
+<li><a href='codecamp.html'>codecamp</a></li>
+<li><a href='svanne.html'>svanne</a></li>
+</ul>
+</section>
+<section>
+<h2>posts</h2>
+<ul class='nobull capital'>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+</ul>
+</section>
+<section>
+<h2 class='self'>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='digital_art.html'>digital_art</a></li>
+<li><a href='electronics.html' class='self'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='myself.html'>myself</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='changes.html'>changes</a></li>
+</ul>
+</section>
+</section>
+</details></nav>
+<!-- Generated file, do not edit -->
+<main>
+<figure>
+<img src="../media/refs/radio.jpeg">
+</figure>
+<h2>Electronics</h2>
+<p>
+There are several barriers of entry to engaging with electronics:
+</p>
+<ul><li>Technical Knowledge</li><li>Material Costs</li><li>Tool Access</li></ul>
+<p>
+While none of these three things can be wholly substituted, technical knowledge is particularly non-negotiable. Knowledge does not come quickly and can only be gained through consistent and purposeful effort. Material costs for circuit components can be navigated by harvesting unwanted electronics, but this is predicated on already possessing sufficient knowledge of the craft. Access to tools like voltmeters and osciliscopes is difficult to obtain &mdash; other than buying second-hand or finding a friend willing to share, this is also difficult.
+</p>
+<p>
+I was fortunate enough to stumble across a local electronics/permacomputing community center <a href="iffybooks.net" target="_out">IffyBooks</a> in Philadelphia which provides cheap electronics kits and learning resources. Through IffyBooks, I was able to assemble and (most importantly) understand several projects ranging from the hacking of a WiFi emitter to install my own integrated software, to a solar powered modulated synthesizer. 
+</p>
+
+<h2>A Paper Computer</h2>
+<p>
+Paper computers were meant as educational tools to teach those interested in how computers work who did not have the means to actively work with one. The most recent widespread use of a paper computer was in West Germany in the early 1980s. The "Know-how Computer" debuted on the German television program WDR Computerclub in 1983 and could be used at home by anyone who had access to a pen, paper, and some toothpicks. 
+</p>
+<p>
+<table border='2'>
+<tr><td>Command</td><td>Action</td></tr>
+<tr><td><code>inc</code> *register*</td><td>increments value in given register by 1</td></tr>
+<tr><td><code>dec</code> *register*</td><td>decrements value in given register by 1</td></tr>
+<tr><td><code>jmp</code> *line*</td><td>jumps to given line number</td></tr>
+<tr><td><code>isz</code> *register*</td><td>check given register. If value is zero, skip a line. If not, continue.</td></tr>
+<tr><td><code>stp</code></td><td>stops program</td></tr>
+</table>
+</p>
+<p>
+Surprisingly, these five commands are all that are required for this instruction set to be Turing Complete, meaning it is able to perform any mathematical operation and simulate any other Turing Complete instruction set.
+</p>
+<p>
+<figure>
+<img src="../media/refs/WDR_paper_computer_performing_addition.gif" style="width:350px">
+<figcaption>A five-instruction computer program adding the integers 4 and 5. After 19 program steps the result 9 is in register 1 - WikiCommons</figcaption>
+</figure>
+</p>
+
+<h2>Pocket WiFi Portal</h2>
+<p>
+  Whether recognized or not, captive WiFi portals can be found all around us. A captive portal is a WiFi signal that displays a page to a user when they try to connect. They most often are used to prompt a user for authentication information; you've likely seen a captive portal at a hotel or coffee shop. Such portals present an interesting basis for experimentation as they essentially act as localized information transmitters that can interact with a user's browser without needing to be connected to the internet.
+</p>
+<p>
+  "Hackers" much smarter than I found a way to augment a standalone WiFi transmitter chip to force it to act as a captive portal and transmit data stored on the chip's flash memory.
+</p>
+<div class="row">
+  <div class="column2">
+    <figure>
+      <img src="../media/refs/pocket_wifi_schematic.jpeg">
+      <figcaption>Wemos D1 Mini schematic</figcaption>
+    </figure>
+  </div>
+  <div class="column2">
+    <figure>
+      <img src="../media/refs/pocket_wifi.jpeg">
+      <figcaption>Wemos D1 in hand</figcaption>
+    </figure>
+  </div>
+</div>
+
+<h2>Solar Powered Synth</h2>
+<p>
+  Music from the sun! The synth is built around the SN74HC14 integrated circuit which belongs to a class of IC called a hex inverter as it contains six logical NOT gates (a.k.a. inverters). <br>The circuit and final project can be summarized as follows:
+</p>
+<p>
+  <ul>
+    <li>An oscillator circuit that generates a square wave.</li>
+    <li>An octave-drop switch (achieved by passing current through a second capacitor).</li>
+    <li>Pitch-controlling potentiometer.</li>
+    <li>Solar panel power supply.</li>
+    <li>Speaker output and physical amplifier.</li>
+  </ul>
+</p>
+<div class="row">
+  <div class="column2">
+    <figure>
+      <img src="../media/refs/circuit.svg">
+      <figcaption>solar synth schematic</figcaption>
+    </figure>
+  </div>
+  <div class="column2">
+    <figure>
+      <img src="../media/refs/solar_synth.jpeg">
+      <figcaption>solar synth in action</figcaption>
+    </figure>
+  </div>
+</div>
+</main><footer><hr /><b>Sean C. Lewis</b> © 2023 — <a href='NULL' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>
