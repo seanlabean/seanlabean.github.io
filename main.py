@@ -95,7 +95,7 @@ def write_footer(fn):
         #fpedited(f, srcpath)
         f.write("<b>Sean C. Lewis</b> © 2023 — ")
         f.write("<a href='" + LICENSE + "' target='_blank'>BY-NC-SA 4.0</a> — ")
-        f.write("Built with <a href='https://github.com/seanlabean/astrea'>Astrea</a>")
+        f.write("Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a>")
         f.write("</footer>")
         f.write("</body>")
         f.write("</html>")
