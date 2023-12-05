@@ -50,7 +50,7 @@ mark { background-color: #b9b9b9; color: black; }
     body a { color: rgb(46, 46, 46); }
     body a:hover {color: rgb(255, 255, 255); background-color: #000000;}
     body a.self:before { content:"> " }
-    main > pre { background: white; color:#000}
+    main > pre { overflow:auto; background: white; color:#000; padding:10px; }
     main > code { background:white; color:#000}
     body select { color: black; background-color: white;}
     main .project { border-left:2px solid white }
