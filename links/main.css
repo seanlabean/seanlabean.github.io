@@ -4,7 +4,7 @@
 body { background:#fff; color:#000; overflow-x: hidden; font-family: sans-serif; padding:0; margin:0; position: absolute;}
 header { padding: 30px}
 
-nav { padding: 45px; float: left; }
+nav { padding: 45px; margin-top: -45px; float: left; }
 nav details summary { margin-bottom: 30px }
 nav .site-nav section { line-height: 22px; margin-bottom: 25px;}
 nav .site-nav section h2 { margin: 20px 0 10px 0; }

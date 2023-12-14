@@ -33,10 +33,10 @@ def write_header(f, fn, head, cat_dict):
     
 def write_nav(f, fn, cat_dict):
     with open(DEST+'/'+fn+'.html', 'a') as f:
-        f.write("<nav><details open>\n")
-        f.write("<summary>Navigator</summary>\n")
+        f.write("<nav>\n")
+        #f.write("<summary>Navigator</summary>\n")
         f.write("<section class='site-nav'>\n")
-        f.write("<section>\n<ul class='nobull'>\n<li><a href='home.html'>Back Home</a></li></ul>\n</section>\n")
+        #f.write("<section>\n<ul class='nobull'>\n<li><a href='home.html'>Back Home</a></li></ul>\n</section>\n")
         # find this filename as a value in the category dict. Return the category.
         match_cat = next((key for key, values in cat_dict.items() if fn in values), None)
         # make nav bar for each page. note which category the current page belongs AND mark current page in bar
