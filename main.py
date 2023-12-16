@@ -57,14 +57,15 @@ def write_nav(f, fn, cat_dict):
 
 def write_toc_body(cat_dict):
     with open(DEST+'/'+TABLEOFCONTENTS+'.html', 'a') as f:
-        f.write("<body>")
+        f.write("<nav></nav>")
         f.write("<main>")
-        f.write("<ul>")
+        f.write("<h2>The Garden at a Glance</h2>")
+        f.write("<article><p>")
+        f.write("<ul class='nobull'>")
         for page in sorted([value for values in cat_dict.values() for value in values]):
             f.write("<li><a href='"+page+".html'>"+page+"</a></li>")
-            #f.write(key + " " + str(cat_dict[key]))
         f.write("</ul>")
-        f.write("</main>")
+        f.write("</p></article></main>")
         f.close()
 
 def parse_body(lex_f, fn, cat_dict):
