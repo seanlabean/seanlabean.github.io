@@ -4,7 +4,7 @@ global INCL; INCL = "./inc"
 global DEST; DEST = "./site"
 global NAME; NAME = "S. C. Lewis"
 global DOMAIN; DOMAIN = "www.sc-lewis.com"
-global LICENSE; LICENSE = "NULL"
+global LICENSE; LICENSE = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 global TABLEOFCONTENTS; TABLEOFCONTENTS = "toc"
 
 def lexicon():
@@ -94,7 +94,7 @@ def write_footer(fn):
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<footer><hr />")
         #fpedited(f, srcpath)
-        f.write("<b>Sean C. Lewis</b> © 2023 — ")
+        f.write("<b>Sean C. Lewis</b> © 2024 — ")
         f.write("<a href='" + LICENSE + "' target='_blank'>BY-NC-SA 4.0</a> — ")
         f.write("Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a>")
         f.write("</footer>")
