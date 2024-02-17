@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;about</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br><nav>
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;bent_data</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br><nav>
 <section class='site-nav'>
 <section>
 <h2>projects</h2>
@@ -10,18 +10,18 @@
 </ul>
 </section>
 <section>
-<h2>posts</h2>
+<h2 class='self'>posts</h2>
 <ul class='nobull capital'>
-<li><a href='bent_data.html'>bent_data</a></li>
+<li><mark><a href='bent_data.html' class='self'>bent_data</a></mark></li>
 <li><a href='esolangs.html'>esolangs</a></li>
 <li><a href='lightning.html'>lightning</a></li>
 <li><a href='rat_race.html'>rat_race</a></li>
 </ul>
 </section>
 <section>
-<h2 class='self'>meta</h2>
+<h2>meta</h2>
 <ul class='nobull capital'>
-<li><mark><a href='about.html' class='self'>about</a></mark></li>
+<li><a href='about.html'>about</a></li>
 <li><a href='atavata.html'>atavata</a></li>
 <li><a href='meta.html'>meta</a></li>
 <li><a href='myself.html'>myself</a></li>
@@ -52,16 +52,19 @@
 </details></nav>
 <!-- Generated file, do not edit -->
 <main>
-<figure>
-<img src="../media/refs/leaves.jpg">
-</figure>
+<h2>Databending for Dummies</h2>
+<h3>This page is under development... come back later.</h3>
 <p>
-I originally began this website as a means to make a more permanent mark on the world. I was finding that my fleeting interests and even more substantial hobbies came and went with nothing to show other than slowly fading memories. I figured that writing things down in combination with learning HTML, CSS, and JavaScript would be a fun endeavor: no expectations, no deadlines, just record keepings and developing new skills. 
+    Simple steps to databend using only FOSS.
+    <ol>
+        <li>Open an image in GIMP, take note of its HxW dimensions.</li>
+        <li>Export the image, force its file-type to be Raw Image Data. When prompted, save it as Planar RGB type.</li>
+        <li>Open Audacity and import the newly saved image as Raw Data. Assign U-Law encoding, no endianness byte order, and Mono channel.</li>
+        <li>Apply effects like wahwah, phaser, or reverb. Or cut and paste portions of the image. Normalize?</li>
+        <li>Export as Other uncompressed files and give it a RAW (Headerless) Header and U-Law encoding.</li>
+        <li>Back to GIMP, open the new image, force it to open as a Raw image data. Re-enter its original HxW dimensions and give it the Planar RGB image type.</li>
+    </ol>
+    You're done! You're a databender
 </p>
-<p>
-And so, this loosely bundled assortment of files exists as a dynamic document where I can track my life, scientific and computational interests, and what I do for fun. Yearly reflections will serve as an evaluation of my status as a experiential force in the universe.
-</p>
-<p>
-While you are here, you can learn a little bit more about <a href="../site/myself.html">myself</a> and how this repository <a href="../site/meta.html">operates</a>.
-</p>
+
 </main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>
