@@ -25,6 +25,7 @@ main figcaption {margin-bottom: 15px; clear: both}
 main a:before { content:"{" }
 main a:after { content:"}" }
 main > * { max-width: 600px; margin-bottom: 30px }
+main code {font-family: monospace;}
 
 
 footer { line-height: 30px; clear:both; padding:45px; }
