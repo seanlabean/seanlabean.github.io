@@ -50,7 +50,8 @@ def write_nav(f, fn, cat_dict):
             f.write("</ul>\n")
             f.write("</section>\n")
         f.write("<section><ul class='nobull capital'>")
-        f.write("<li><a href='"+TABLEOFCONTENTS+".html'>garden contents</a></li>\n</section>\n")
+        # turning off toc in nav bar for now. cleaner. SCL 02-25-24
+        #f.write("<li><a href='"+TABLEOFCONTENTS+".html'>garden contents</a></li>\n</section>\n")
         f.write("</section>\n")
         f.write("</details></nav>\n")
         f.write("<!-- Generated file, do not edit -->\n")
