@@ -22,10 +22,12 @@ def write_header(f, fn, head, cat_dict):
         f.write("<meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/>")
         f.write("<title>" + NAME + "&mdash;" + fn + "</title></head>")
         f.write("<body>")
+        if len(head)>0:
+            head = head[0].split(':')[1].strip()
         if fn == "home":
-            f.write("<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;<img src='../media/slewis_wiki.gif' width='600' height='80'></header>")
+            f.write("<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;<img src='../media/slewis_wiki.gif' width='600' height='80'><br></header>")
         else:
-            f.write("<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br>")#&nbsp;&nbsp;<img src='../media/refs/atavata.png' width='600' height='80'></header>")
+            f.write(f"<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br></header>")#&nbsp;&nbsp;<img src='../media/refs/atavata.png' width='600' height='80'></header>")
         # can loop over header lines and do specific things based on contents
         #for line in head:
             #f.write(line)
@@ -52,6 +54,7 @@ def write_nav(f, fn, cat_dict):
         f.write("<section><ul class='nobull capital'>")
         # turning off toc in nav bar for now. cleaner. SCL 02-25-24
         #f.write("<li><a href='"+TABLEOFCONTENTS+".html'>garden contents</a></li>\n</section>\n")
+        f.write("<li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='http://extras3.smartgb.com/b/gb_80x40.gif' width='80' height='40'></a></li>")
         f.write("</section>\n")
         f.write("</details></nav>\n")
         f.write("<!-- Generated file, do not edit -->\n")
