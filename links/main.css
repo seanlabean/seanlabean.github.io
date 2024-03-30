@@ -1,7 +1,7 @@
 *:focus         { outline: none}
-::selection       { background: #5f5f5f; opacity:1.0; color:#ffffff; padding:10px; /* Safari */ }
+::selection       { background-color: #5f5f5f; opacity:1.0; color:#ffffff; padding:10px; /* Safari */ }
 
-body { background:#fff; color:#000; overflow-x: hidden; font-family: sans-serif; padding:0; margin:0; position: absolute;}
+body { background-color:#fff; color:#000; overflow-x: hidden; font-family: sans-serif; padding:0; margin:0; position: absolute;}
 header { padding: 30px}
 
 @font-face {
@@ -51,13 +51,13 @@ mark { background-color: #b9b9b9; color: black; }
 /* Theme */
 
 @media (prefers-color-scheme: dark) {
-    body {background: #ececec; color: rgb(0, 0, 0)}
+    body {background-color: #ececec; color: rgb(0, 0, 0)}
     body header a img { filter: invert(1)}
     body a { color: rgb(46, 46, 46); }
     body a:hover {color: rgb(255, 255, 255); background-color: #000000;}
     body a.self:before { content:"> " }
-    main > pre { overflow:auto; background: white; color:#000; padding:10px; }
-    main > code { background:white; color:#000}
+    main > pre { overflow:auto; background-color: white; color:#000; padding:10px; }
+    main > code { background-color:white; color:#000}
     body select { color: black; background-color: white;}
     main .project { border-left:2px solid white }
     .notice { border-color:white; }

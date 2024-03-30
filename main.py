@@ -145,6 +145,7 @@ def engine():
     # preprocess loop to get table of contents (which files belong to which categories)
     categories = {}
     tock = time()
+    files_not_to_process = [] #["./inc/atavata.htm"]
     for lex_f in lex:
         f, fn = init_site_file(lex_f)
         preparse_header(lex_f, fn, categories)
@@ -152,6 +153,7 @@ def engine():
     write_table_of_contents(categories)
     # main processing loop
     for lex_f in lex:
+        if lex_f in files_not_to_process: continue
         f, fn = init_site_file(lex_f)
         parse_body(lex_f, fn, categories)
         write_footer(fn)
