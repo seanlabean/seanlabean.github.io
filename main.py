@@ -73,7 +73,7 @@ def write_toc_body(cat_dict):
         f.write("</p></article></main>")
         f.close()
 
-def parse_body(lex_f, fn, cat_dict):
+def parse_body(lex_f, fn, cat_dict, proc=True):
     with open(lex_f) as inc:
         # SLICE out and process header lines
         inc_lines = inc.readlines()
@@ -88,13 +88,16 @@ def parse_body(lex_f, fn, cat_dict):
             body_lines = inc_lines
         inc.close()
     with open(DEST+'/'+fn+'.html', 'a') as f:
-        write_header(f, fn, head, cat_dict)
-        write_nav(f, fn, cat_dict)
+        if proc:
+            write_header(f, fn, head, cat_dict)
+            write_nav(f, fn, cat_dict)
         for line in body_lines:
             f.write(line)
         f.close()
 
-def write_footer(fn):
+def write_footer(fn, proc=True):
+    if not proc:
+        return
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<footer><hr />")
         #fpedited(f, srcpath)
@@ -145,7 +148,7 @@ def engine():
     # preprocess loop to get table of contents (which files belong to which categories)
     categories = {}
     tock = time()
-    files_not_to_process = [] #["./inc/atavata.htm"]
+    files_not_to_process = ["./inc/atavata.htm"]
     for lex_f in lex:
         f, fn = init_site_file(lex_f)
         preparse_header(lex_f, fn, categories)
@@ -153,10 +156,11 @@ def engine():
     write_table_of_contents(categories)
     # main processing loop
     for lex_f in lex:
-        if lex_f in files_not_to_process: continue
         f, fn = init_site_file(lex_f)
-        parse_body(lex_f, fn, categories)
-        write_footer(fn)
+        proc = False if lex_f in files_not_to_process else True
+            
+        parse_body(lex_f, fn, categories, proc)
+        write_footer(fn, proc)
         finalize(f, fn)
     tick = time()
     print(f"Processed {len(lex)} files in {1000*(tick-tock):.5} miliseconds.")
