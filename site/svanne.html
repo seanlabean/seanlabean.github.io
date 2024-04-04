@@ -50,9 +50,41 @@
 <section><ul class='nobull capital'><li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='http://extras3.smartgb.com/b/gb_80x40.gif' width='80' height='40'></a></li></section>
 </details></nav>
 <!-- Generated file, do not edit -->
+<style>
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+.spec {
+    font-family: monospace;
+    color: #ffff;
+    background-color: black;
+}
 
+input {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+</style>
 <main>
 <h2>Svanne: <br>Breaking From Gregorian Monotony</h2>
+    <h1><div class="spec" id="result"></div></h1>
+    <!--label for="user_date">Convert any day you'd like (DD-MM-YYYY):</label>
+    <input type="text" id="user_date">
+    <button onclick="convertToSvanne()">Convert</button-->
+<script src="../media/code/svanne.js"></script>
 <p>
 Svanne is an alphabetic date format. The Svannic calendar has 26 months each consisting of 2 weeks of 7 days each. Each month's name corresponds to one of the 26 letters of the alphabet.
 </p>
@@ -71,10 +103,13 @@ The 365th day of the year is the <i>Year Day</i>(+00), followed by the <i>Leap D
 To calculate the day of the year, convert the month's letter to a value, starting with 0 for A, multiply by 14 and add the day of the month. For example, <code>J05</code> is equal to <code>(+ 5 (* 9 14))</code>, or 131.
 </p>
 <p>
-I wrote a quick Python script to calculate any Svannic date of the user's choosing. As a brief aside, I wrote the script entirely on a flight from PHL to SFO. It took about 2 hours and I was enthralled by the experience. Having no internet connection I was forced to rely on deeply buried programming knowledge and a mental map of how I wanted the script to operate. Typically I would employ the help of decades old forum posts or some AI assistant to fill in my knowledge gaps and speed along the writing process. As a result I feel particullarly connected and proud of this project as it constitutes not only an interesting idea (ripped selfishly and without shame from Devine Lu Linvega) but it also represents a personal triumph of relying entirely on my own skills and ingenuity. Please, clone this project and either use it or tweak it or break it. Have fun!
+I wrote a quick Python script to calculate any Svannic date of the user's choosing. As a brief aside, I wrote the script entirely on a flight from PHL to SFO. It took about 2 hours and I was enthralled by the experience. Having no internet connection I was forced to rely on deeply buried programming knowledge and a mental map of how I wanted the script to operate. Typically I would employ the help of decades old forum posts or some AI assistant to fill in my knowledge gaps and speed along the writing process. As a result I feel particullarly connected and proud of this project as it constitutes not only an interesting idea (ripped selfishly and without shame from Devine Lu Linvega) but it also represents a personal triumph of relying entirely on my own skills and ingenuity. 
 </p>
 <p>
-<a href="https://github.com/seanlabean/PythonProjects/tree/master/Svanne" target="_out">Github</a>
+    Running in the background is a very simple pared down version of the Python script written in Javascript to show the current Svannic date for this respository. The date (nix the first two integers) is true for any and all repositories. Recall the first two integers relate to the inception year of the repository in question.
+</p>
+<p>
+    Please, clone this project and either use it or tweak it or break it. Have fun!<br> <a href="https://github.com/seanlabean/PythonProjects/tree/master/Svanne" target="_out">Svanne Github</a>
 </p>
 <pre>
 $ python svanne.py --help
