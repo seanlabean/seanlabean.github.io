@@ -54,7 +54,7 @@ def write_nav(f, fn, cat_dict):
         f.write("<section><ul class='nobull capital'>")
         # turning off toc in nav bar for now. cleaner. SCL 02-25-24
         #f.write("<li><a href='"+TABLEOFCONTENTS+".html'>garden contents</a></li>\n</section>\n")
-        f.write("<li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='http://extras3.smartgb.com/b/gb_80x40.gif' width='80' height='40'></a></li>")
+        f.write("<li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='../media/refs/gb_80x40.gif' width='80' height='40'></a></li>")
         f.write("</section>\n")
         f.write("</details></nav>\n")
         f.write("<!-- Generated file, do not edit -->\n")
