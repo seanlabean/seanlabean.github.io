@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;thesis</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br></header><nav>
+<section class='site-nav'>
+<section>
+<h2 class='self'>projects</h2>
+<ul class='nobull capital'>
+<li><a href='astrea.html'>astrea</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='ml_basics.html'>ml_basics</a></li>
+<li><a href='sartoris.html'>sartoris</a></li>
+<li><a href='svanne.html'>svanne</a></li>
+<li><mark><a href='thesis.html' class='self'>thesis</a></mark></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='meta-meta.html'>meta-meta</a></li>
+<li><a href='myself.html'>myself</a></li>
+</ul>
+</section>
+<section>
+<h2>posts</h2>
+<ul class='nobull capital'>
+<li><a href='bent_data.html'>bent_data</a></li>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+<li><a href='rat_race.html'>rat_race</a></li>
+</ul>
+</section>
+<section>
+<h2>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='digital_art.html'>digital_art</a></li>
+<li><a href='electronics.html'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+<li><a href='recipes.html'>recipes</a></li>
+<li><a href='running.html'>running</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='changes.html'>changes</a></li>
+</ul>
+</section>
+<section><ul class='nobull capital'><li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='../media/refs/gb_80x40.gif' width='80' height='40'></a></li></section>
+</details></nav>
+<!-- Generated file, do not edit -->
+<main>
+<h2>In a past life I was an astrophysicist</h2>
+<figure>
+    <img src="../media/refs/astro.jpeg" style="width:200px;float:right"/>
+</figure>
+<p>There is a common misconception that <a href="https://en.wikipedia.org/wiki/Astronomy">astronomy</a> and <a href="https://en.wikipedia.org/wiki/Astrophysics">astrophysics</a> are interchangeable, one in the same. I see astronomy as the deceptively broad catagory of science of all things outside of our world, the study of what the universe is like. Astrophysics, on the other hand, is the study of <em>how</em> the universe works. But even within this category, astrophysicists have incredibly diverse disciplines. With four astrophysicists in a room, one may study planets, another stars, and the other two study black holes but one focuses on the radiation emitted from ancient active galactic nuclei and the other the theoretical implications of warped space-time. In essence, despite having the same disciplinary title, it's entirely possible each of these four astrophysicists would have no idea what the others are talking about. Such is life in the hyper-specialized world of science.</p>
+
+<p>My specialty is the computational modeling of the formation of star clusters. Stars all form from the collapse of gas in a giant molecular cloud (GMC). The vast maojrity of stars also form in clusters, spatially compact systems where hundreds, thousands, or tens of thousands of stars closely interact gravitationally with one another. So where does my work come in? Why are computational models necessary to study this? Observing star cluster formation is notoriously difficult. The process of GMC collapse, the formation of individual stars, and the hierarchical assembly of the star cluster takes place over hundreds of thousands or millions of years. The nearest regions of star cluster formation are not only many thousands of lightyears away, but they also tend to reside deep within GMC structures which block our ability to watch the formation of the embedded clusters. But, we are able to observe star clusters that have successfully formed and cleared their surroundings of dense obscuring gas. Therefore we know what the star cluster formation process results in, but it is currently unknown how that processs gets to the point of completion. It is my job as a computational astrophysicist to help find out <em>how</em> star cluster formation works. This is a particularly difficult task since the star formation process is incredibly complex. Such simulation require detailed magnetohydrodynamics, realistic heating and cooling of gas, gravitational interactions between stars and stars and gas, and radiative and both radiative and mechanical feedback mechanisms from massive stars (ionizing radiation, stellar winds, and supernovae).</p>
+
+<figure>
+    <img src='../media/refs/research.jpeg'>
+</figure>
+
+<h2>New Perspectives on the Formation and Early Evolution of Stellar Clusters</h2>
+<p>My thesis is two-fold. First, I test the hypothesis that the <em>timing</em> of massive star formation has significant effects on the star cluster formation process. Specifically, that early-forming massive stars supress subsequent star formation and stifles the hierarchical cluster assembly process. Secondly, I have built a revolutionary tool which bridges two types of hydrodynamical data structures: Voronoi meshes and adaptive mesh refinement (AMR) grids. This tool allows output data from Voronoi mesh codes (which excel at simulating rotating gas and particle structures such as galaxies) to be converted into input data for AMR codes (which are faster and more capable at resolving intense shocks). My tool can ultimately be used to bridge the gap between galaxy simulations and detailed simulations of individual star forming regions, a feat which is computationally impossible to achieve with any single simulation.</p>
+
+<p>Other than astrophysics, my endeavors as a Ph.D. candidate have also resulted in several computer science projects of which I am particularly proud. I built a parallel processing Python library that utilizes MPI packages to allow for more efficient task-based parallel processing rather than the slower data-based processing. From scratch, using only numpy Python libraries, I built a customizable L-layer neural network with any number n neurons per layer. I have also amassed an enormous array of data visualization routines, some taking advantage of my parallel processing library, and others utilizing other visualization-specific packages to generate images fit for presentations at conferences such as the American Astronomical Society (AAS-233, AAS-236) at which I received the Chambliss Astronomy Achievement Graduate Student Honorable Mention for my poster presentation.</p>
+</main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;svanne</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br></header><nav>
+<section class='site-nav'>
+<section>
+<h2 class='self'>projects</h2>
+<ul class='nobull capital'>
+<li><a href='astrea.html'>astrea</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='ml_basics.html'>ml_basics</a></li>
+<li><a href='sartoris.html'>sartoris</a></li>
+<li><mark><a href='svanne.html' class='self'>svanne</a></mark></li>
+<li><a href='thesis.html'>thesis</a></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='meta-meta.html'>meta-meta</a></li>
+<li><a href='myself.html'>myself</a></li>
+</ul>
+</section>
+<section>
+<h2>posts</h2>
+<ul class='nobull capital'>
+<li><a href='bent_data.html'>bent_data</a></li>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+<li><a href='rat_race.html'>rat_race</a></li>
+</ul>
+</section>
+<section>
+<h2>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='digital_art.html'>digital_art</a></li>
+<li><a href='electronics.html'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+<li><a href='recipes.html'>recipes</a></li>
+<li><a href='running.html'>running</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='changes.html'>changes</a></li>
+</ul>
+</section>
+<section><ul class='nobull capital'><li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='../media/refs/gb_80x40.gif' width='80' height='40'></a></li></section>
+</details></nav>
+<!-- Generated file, do not edit -->
+<style>
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+.spec {
+    font-family: monospace;
+    color: #ffff;
+    background-color: black;
+}
+
+input {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+</style>
+<main>
+<h2>Svanne: <br>Breaking From Gregorian Monotony</h2>
+    <h1><div class="spec" id="result"></div></h1>
+    <!--label for="user_date">Convert any day you'd like (DD-MM-YYYY):</label>
+    <input type="text" id="user_date">
+    <button onclick="convertToSvanne()">Convert</button-->
+<script src="../media/code/svanne.js"></script>
+<p>
+Svanne is an alphabetic date format. The Svannic calendar has 26 months each consisting of 2 weeks of 7 days each. Each month's name corresponds to one of the 26 letters of the alphabet.
+</p>
+<p>
+The purpose of this special calendar is to record daily or weekly activity logs starting at year 0 when the tracking started. For example, if a blog was initiated in 2006 (which becomes its year 0), the Svannic date 13A05 is equivalent to January 6th of the 14th year after blog inception (2020).
+</p>
+<ul>
+<li><code>01D07</code> &mdash; 2007-02-18</li>
+<li><code>02A00</code> &mdash; 2008-01-01</li>
+<li><code>03+00</code> &mdash; 2009-12-31</li>
+</ul>
+<p>
+The 365th day of the year is the <i>Year Day</i>(+00), followed by the <i>Leap Day</i>(+01) on leap years.
+</p>
+<p>
+To calculate the day of the year, convert the month's letter to a value, starting with 0 for A, multiply by 14 and add the day of the month. For example, <code>J05</code> is equal to <code>(+ 5 (* 9 14))</code>, or 131.
+</p>
+<p>
+I wrote a quick Python script to calculate any Svannic date of the user's choosing. As a brief aside, I wrote the script entirely on a flight from PHL to SFO. It took about 2 hours and I was enthralled by the experience. Having no internet connection I was forced to rely on deeply buried programming knowledge and a mental map of how I wanted the script to operate. Typically I would employ the help of decades old forum posts or some AI assistant to fill in my knowledge gaps and speed along the writing process. As a result I feel particullarly connected and proud of this project as it constitutes not only an interesting idea (ripped selfishly and without shame from Devine Lu Linvega) but it also represents a personal triumph of relying entirely on my own skills and ingenuity. 
+</p>
+<p>
+    Running in the background is a very simple pared down version of the Python script written in Javascript to show the current Svannic date for this respository. The date (nix the first two integers) is true for any and all repositories. Recall the first two integers relate to the inception year of the repository in question.
+</p>
+<p>
+    Please, clone this project and either use it or tweak it or break it. Have fun!<br> <a href="https://github.com/seanlabean/PythonProjects/tree/master/Svanne" target="_out">Svanne Github</a>
+</p>
+<pre>
+$ python svanne.py --help
+usage: svanne.py [-h] [-i INCEPTION] [-d DATE] [-npg] [-nps]
+optional arguments:
+-h, --help            show this help message and exit
+-i INCEPTION, --inception INCEPTION
+                    Inception year of repository.
+-d DATE, --date DATE  
+                    Date to convert. Must be in dd-mm-yyyy format.
+-npg, --no_print_gregorian
+                    Dont print Gregorian date format.
+-nps, --no_print_svanne
+                    Dont print Svanne date format.
+</pre>
+</p>
+
+</main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>
