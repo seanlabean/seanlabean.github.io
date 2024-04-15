@@ -27,7 +27,7 @@ def write_header(f, fn, head, cat_dict):
         if fn == "home":
             f.write("<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;<img src='../media/slewis_wiki.gif' width='600' height='80'><br></header>")
         else:
-            f.write(f"<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a><br></header>")#&nbsp;&nbsp;<img src='../media/refs/atavata.png' width='600' height='80'></header>")
+            f.write(f"<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header>")
         # can loop over header lines and do specific things based on contents
         #for line in head:
             #f.write(line)
