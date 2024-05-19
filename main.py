@@ -145,6 +145,7 @@ def finalize(f, fn):
 
 def engine():
     lex = lexicon()
+    i=1
     # preprocess loop to get table of contents (which files belong to which categories)
     categories = {}
     tock = time()
@@ -162,6 +163,7 @@ def engine():
         parse_body(lex_f, fn, categories, proc)
         write_footer(fn, proc)
         finalize(f, fn)
+        print(f"{str(i).zfill(2)}/{len(lex)} :: {fn}"); i += 1
     tick = time()
     print(f"Processed {len(lex)} files in {1000*(tick-tock):.5} miliseconds.")
 if __name__ == "__main__":
