@@ -70,6 +70,31 @@ category: projects
             color: black;
         }
     </style>
+    <style>
+        .video-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px;
+        }
+
+    .video {
+        flex: 1 1 30%; /* Grow, shrink, basis */
+        margin: 10px;
+        position: relative;
+        padding-bottom: 20%; /* 16:9 aspect ratio */
+        height: 0;
+        }
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        }
+    </style>
   </head>
 <body background="../media/videos/bg_rain.gif">
 <main>
@@ -82,8 +107,19 @@ category: projects
     <p class="text">
     This project is the more dynamic and experimental side of my work and a manifestation of the original purpose of this website. It is a place and persona through which I can share my experiementation with software and creative coding. It, ike all things stemming from my mind, comes and goes in violent waves of inspiration and motivation. What you see through here are the crests of these waves.
     </p>
+<div class="video-container">
+    <div class="video">
+        <iframe width="560" height="560" src="https://www.youtube.com/embed/l9NRb2lZ2Ec" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+        <iframe width="560" height="560" src="https://www.youtube.com/embed/-YG6t0bnfIo" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+        <iframe width="560" height="560" src="https://www.youtube.com/embed/SExNYVXYufY" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
     <p class="text">
-    This page is a work in progress. Check back later for links ;P
+    This page is a work in progress. Check back later for more links ;P
     </p>
 </div>
 <a href="home.html"><span class="button">Take Me Back</span></a>
@@ -91,14 +127,3 @@ category: projects
 </main>
 </body>
 </html>
-
-<!--
-<h1>ΛTΛVΛTΛ</h1>
-<p>
-ATAVATA is a representation of mine specifically focused on my exploration of esoteric code, digital art and music, and sustainable software. I upload windows into these explorations to the <a href="https://youtube.com/@atavata" target="_out">ATAVATA YouTube channel</a>.
-</p>
-<p>
-    ATAVATA is the more dynamic and experimental side of my work and a manifestation of the original purpose of this website. It is a place and persona through which I can share my experiementation with software and creative coding. It, ike all things stemming from my mind, comes and goes in violent waves of inspiration and motivation. What you see through ATAVATA are the crests of these waves.
-</p>
-</main>
--->
