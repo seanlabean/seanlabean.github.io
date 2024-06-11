@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;mathparse</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header><nav>
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;tools</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header><nav>
 <section class='site-nav'>
 <section>
 <h2>projects</h2>
@@ -12,12 +12,13 @@
 </ul>
 </section>
 <section>
-<h2>meta</h2>
+<h2 class='self'>meta</h2>
 <ul class='nobull capital'>
 <li><a href='about.html'>about</a></li>
 <li><a href='meta-meta.html'>meta-meta</a></li>
 <li><a href='myself.html'>myself</a></li>
 <li><a href='resume.html'>resume</a></li>
+<li><mark><a href='tools.html' class='self'>tools</a></mark></li>
 </ul>
 </section>
 <section>
@@ -55,7 +56,7 @@
 <!-- Generated file, do not edit -->
 
 <main>
-    <h1>Math.js Parser</h1>
+    <h2>Math.js Parser</h2>
     <label for="expression">Enter a mathematical expression:</label>
     <input type="text" id="expression" placeholder="e.g., 3 * (2 + x)">
     <button onclick="parseExpression()">Parse</button>
@@ -71,6 +72,51 @@
         } catch (error) {
           document.getElementById('output').textContent = 'Error parsing expression: ' + error.message;
         }
+      }
+    </script>
+
+    <h2>Temperature Converter</h2>
+    <label for="temp">Enter a temperature:</label>
+    <input type="number" id="temp" placeholder="e.g., 32">
+    <select id="unit">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <div id="output-temp"></div>
+    <script>
+      function convertTemp() {
+        const temp = document.getElementById('temp').value;
+        const unit = document.getElementById('unit').value;
+        const result = unit === 'C' ? (temp * 9 / 5) + 32 : (temp - 32) * 5 / 9;
+        document.getElementById('output-temp').textContent = result.toFixed(2) + '°' + (unit === 'C' ? 'F' : 'C');
+      }
+    </script>
+    <h2>Random Number Generator</h2>
+    <label for="min">Min:</label>
+    <input type="number" id="min" placeholder="e.g., 1">
+    <label for="max">Max:</label>
+    <input type="number" id="max" placeholder="e.g., 100">
+    <button onclick="generateRandom()">Generate</button>
+    <div id="output-random"></div>
+    <script>
+      function generateRandom() {
+        const min = document.getElementById('min').value;
+        const max = document.getElementById('max').value;
+        const result = Math.floor(Math.random() * (max - min + 1)) + parseInt(min);
+        document.getElementById('output-random').textContent = result;
+      }
+    </script>
+    <h2>String Reverser</h2>
+    <label for="string">Enter a string:</label>
+    <input type="text" id="string" placeholder="e.g., Hello, World!">
+    <button onclick="reverseString()">Reverse</button>
+    <div id="output-string"></div>
+    <script>
+      function reverseString() {
+        const string = document.getElementById('string').value;
+        const result = string.split('').reverse().join('');
+        document.getElementById('output-string').textContent = result;
       }
     </script>
 </main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a></footer></body></html>
