@@ -1,0 +1,69 @@
+---
+category: meta
+---
+
+<main>
+    <h2>Math.js Parser</h2>
+    <label for="expression">Enter a mathematical expression:</label>
+    <input type="text" id="expression" placeholder="e.g., 3 * (2 + x)">
+    <button onclick="parseExpression()">Parse</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"></script>
+    <div id="output"></div>
+    
+    <script>
+      function parseExpression() {
+        const expression = document.getElementById('expression').value;
+        try {
+          const node = math.parse(expression);
+          document.getElementById('output').textContent = JSON.stringify(node, null, 2);
+        } catch (error) {
+          document.getElementById('output').textContent = 'Error parsing expression: ' + error.message;
+        }
+      }
+    </script>
+
+    <h2>Temperature Converter</h2>
+    <label for="temp">Enter a temperature:</label>
+    <input type="number" id="temp" placeholder="e.g., 32">
+    <select id="unit">
+      <option value="C">Celsius</option>
+      <option value="F">Fahrenheit</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <div id="output-temp"></div>
+    <script>
+      function convertTemp() {
+        const temp = document.getElementById('temp').value;
+        const unit = document.getElementById('unit').value;
+        const result = unit === 'C' ? (temp * 9 / 5) + 32 : (temp - 32) * 5 / 9;
+        document.getElementById('output-temp').textContent = result.toFixed(2) + '°' + (unit === 'C' ? 'F' : 'C');
+      }
+    </script>
+    <h2>Random Number Generator</h2>
+    <label for="min">Min:</label>
+    <input type="number" id="min" placeholder="e.g., 1">
+    <label for="max">Max:</label>
+    <input type="number" id="max" placeholder="e.g., 100">
+    <button onclick="generateRandom()">Generate</button>
+    <div id="output-random"></div>
+    <script>
+      function generateRandom() {
+        const min = document.getElementById('min').value;
+        const max = document.getElementById('max').value;
+        const result = Math.floor(Math.random() * (max - min + 1)) + parseInt(min);
+        document.getElementById('output-random').textContent = result;
+      }
+    </script>
+    <h2>String Reverser</h2>
+    <label for="string">Enter a string:</label>
+    <input type="text" id="string" placeholder="e.g., Hello, World!">
+    <button onclick="reverseString()">Reverse</button>
+    <div id="output-string"></div>
+    <script>
+      function reverseString() {
+        const string = document.getElementById('string').value;
+        const result = string.split('').reverse().join('');
+        document.getElementById('output-string').textContent = result;
+      }
+    </script>
+</main>
