@@ -5,8 +5,8 @@ body { background-color:#fff; color:#000; overflow-x: hidden; font-family: sans-
 header { padding: 30px }
 
 @font-face {
-  font-family: 'Blotter'; /*a name to be used later*/
-  src: url('./fonts/Blotter-Regular.otf'); /*URL to font*/
+  font-family: 'Gauvine'; /*a name to be used later*/
+  src: url('./fonts/Gauvine.otf'); /*URL to font*/
 }
 
 nav { padding: 45px; margin-top: -45px; float: left; }
@@ -16,7 +16,7 @@ nav .site-nav section h2 { margin: 20px 0 10px 0; }
 nav .site-nav section ul { margin: 0px; padding: 0px; }
 /* nav h2.self:before { content:"[" }
 nav h2.self:after { content:"]" } */
-nav h2 { color:rgb(0, 0, 0); font-family:'Blotter';}
+nav h2 { color:rgb(0, 0, 0); font-family:'Gauvine';}
 nav a.self:before { content:"> " }
 /*nav a.self:after { content:">" }*/
 /* nav a.self { color:#fff} */
