@@ -21,4 +21,24 @@ category: projects
     <p>
         <code>BISCUIT</code> is in its very early stages, there's several more things I want to add to it. If you like what you see, please feel free to fork and contribute. &mdash; <a href="https://github.com/seanlabean/PythonProjects/tree/master/Biscuit">Github</a>
     </p>
+    <h2>A New Design Perspective</h2>
+    <p>
+        Building <code>BISCUIT</code> so far has provided me with an opportunity to reflect on how I engage in the creative process, especially when it comes to programming. It is very easy for me to become paralyzed by the prospect of venturing into the unknown, especially when the finish line in mind is mildly amorphous. To "build a browser", my progress and inspiration could be immediately stunted with the aprehensions of my inability to come up with a complete project on the spot. I didn't know how to query and grab HTML data from a webpage, let alone how to display it to the screen. How was I going to manage every type of webpage format? All the edge cases for intrasite links?
+    </p>
+    <p>
+        To combat the whirpool of fearful musings, I took a few pages from <i>The Pragmatic Programmer</i> by Andy Hunt and Dave Thomas. Start simple. Don't worry  about building a browser all at once. Baby steps: find out how to make a window appear, display some hard-coded text in it. Then expand, Google around to figure out how to make an HTML request and load (parse) the page. Oh! Turns out the library I used to make the window appear also can detect what is clicked on. I can use that to activate hyperlinks and I can re-use my page load function to load up requests to the clicked link! It's all coming together.
+    </p>
+    <p>
+        As the adage goes, the first step is always the hardest. But once I get going, the pieces start falling into place and my vision begins to take form. Sure the goal and purpose of <code>BISCUIT</code> may (see: will) change along the way, I may have to completely restart from scratch to optimize things. But that's the best part, I've already learned so much just from trying.
+    </p>
+    <p>
+        The most powerful mindset to retain while making a mini passion project such as this is one of self-assuredness and a bit of humility. <code>BISCUIT</code> will not change the world, it wont make me an over-night millionaire. It doesn't have to. I built it &mdash; an idea to a functioning, evolving vision and that is reward enough.
+    </p>
+    <h2>Future of <code>BISCUIT</code></h2>
+    <p>
+        I have a couple ideas for what <code>BISCUIT</code> can be. As of <code alt="June 23rd, 2024">02M07</code> it is very much in its infant stages as purely a browser that does simply does not load embedded images or Javascript. To come to a point of completion on that front, I'd like to add a limited visited-page memory to implement "forward" and "back" buttons. It seems that if the CSS styling is defined in the loaded HTML page itself, some of it (like text coloring) gets resolved. But if the page is linked via the meta element, it doesn't. Part of me wants to accomodate this type of CSS implementation since it's so common, but meh. Perhaps best to keep things as clean as possible. To that end, I'd like to clean up the parsed HTML to remove any img/figure elements since they are resolved as weird placeholder sprites and I wont be downloading the linked images anyways.
+    </p>
+    <p>
+        I have some long-horizon goals as well. Although I am pleased with <code>BISCUIT</code> and its simple design, I recognize its uses are very limited. It's a browser that does less. Wow. Cool but what good does that <i>really</i> do? I have an idea brewing of transitioning <code>BISCUIT</code> to be a hybrid browser/web-crawler/bookmark-summarizer. A user would be able to define (via a config file) webpages to be scraped, summarized, and concatenated in HTML plaintext which can then be saved locally. The idea here being that regularly updated pages can serve as a daily news source. We'll see how this manifests. If anything I could tailor it specifically to the webpages I am most interested in like finance, astronomy, tech.
+    </p>
 </main>
