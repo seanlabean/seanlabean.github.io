@@ -18,11 +18,33 @@
 
 <body>
 	<style>
-		img.logo { display: flex; position: absolute center; }
+		.main_img {
+         position: absolute center;
+         margin-top: 150px;
+         max-width: 40%;
+         height:auto;
+      }
 		body { background-color: #e2e2e2;}
+		.text {
+            text-align: absolute center;
+            width: 70%;
+            margin-top: 20px;
+            font-size: 14pt;
+        }
+        * {
+            text-align: absolute center;
+        }
+		body a.link { color: rgb(46, 46, 46); }
+    	body a.link:hover {color: rgb(255, 255, 255); background-color: #000000;}
+    	body a.link:before { content:"{" }
+		body a.link:after { content:"}" }
 	</style>
-	<div>
-		<img src="media/logo.png" class='logo'/>
+	<div align="center">
+		<a href="site/myself.html"><img src="media/logo.png" class="main_img"/></a>
+	</div>
+	<div align="center" position="relative">
+		<p class="text"><a class="link" href="site/home.html">home</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="link" href="site/about.html">about</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="link" href="site/changes.html">changelog</a></p>
+		
 	</div>
 </body>
 </html>
