@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;rhombus</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header><nav>
+<section class='site-nav'>
+<section>
+<h2 class='self'>projects</h2>
+<ul class='nobull capital'>
+<li><a href='astrea.html'>astrea</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='biscuit.html'>biscuit</a></li>
+<li><mark><a href='rhombus.html' class='self'>rhombus</a></mark></li>
+<li><a href='sartoris.html'>sartoris</a></li>
+<li><a href='svanne.html'>svanne</a></li>
+<li><a href='thesis.html'>thesis</a></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='meta-meta.html'>meta-meta</a></li>
+<li><a href='myself.html'>myself</a></li>
+<li><a href='resume.html'>resume</a></li>
+<li><a href='tools.html'>tools</a></li>
+</ul>
+</section>
+<section>
+<h2>posts</h2>
+<ul class='nobull capital'>
+<li><a href='bent_data.html'>bent_data</a></li>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+<li><a href='ml_basics.html'>ml_basics</a></li>
+<li><a href='people.html'>people</a></li>
+<li><a href='rat_race.html'>rat_race</a></li>
+<li><a href='the_story.html'>the_story</a></li>
+</ul>
+</section>
+<section>
+<h2>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='digital_art.html'>digital_art</a></li>
+<li><a href='electronics.html'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+<li><a href='recipes.html'>recipes</a></li>
+<li><a href='running.html'>running</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='changes.html'>changes</a></li>
+<li><a href='current.html'>current</a></li>
+</ul>
+</section>
+<section><ul class='nobull capital'><li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='../media/refs/gb_80x40.gif' width='80' height='40'></a></li></section>
+</details></nav>
+<!-- Generated file, do not edit -->
+<main>
+<h2>An Efficient Parallelism</h2>
+<p>
+    <code>rhombus</code> is a generalizable python-mpi utility for task-based parallel programming.
+</p>
+<h3>Theory</h3>
+<p>
+    This implementation of task-based parallel programming consists of one root processor, and any number of worker processors. The root breaks a portion of a job into bite sized chunks (like a single file) which are then sent to the workers. While the workers... well... work, the root sits and waits. When a worker finishes with its allotted chunk, it pings the root node and asks for another chunk, which the root node then provides. Therefore no worker is ever left without something to do.
+</p>
+<p>
+    This is fundamentally different and more efficient than data-based parallel processing in which an entire job is split into n equally sized chunks (where n is the number of processors) and sent to the worker processors. In this method, when a worker is done processing, it does not need to ask the root node for any more work (since everything has already been distributed to the workers). Therefore, although the task is being completed in parallel, there is a chance that workers will be left idle while they wait for other workers to finish.
+</p>
+<h3>Requirements</h3>
+<p>
+    In addition to whichever packages you use for your process you wish to parallelize, you will need to ensure you have working installs of the following:
+    <ul>
+        <li>python v3.X</li>
+        <li>OpenMPI v4.X.X</li>
+        <li>mpi4py python library</li>
+    </ul>
+    Ensure you have a properly configured and installed version of OpenMPI with your <code>PATH</code> and <code>PYTHONPATH</code> correctly pointed to the install directory before attempting to <code>pip install mpi4py</code>.
+</p>
+<h3>For your consideration</h3>
+<p>
+    In principle task-based parallelism is the more efficient method of parallel programming though with the caveat that any efficiency increase over data-based parallelism tends to zero the more uniform the processing requirements for work chunks. I originally wrote <code>rhombus</code> to aid in the processing of data from astrophysical simulations of star formation, but it is generalizable to any processing tasks that can be strategically chunked.
+</p>
+<p>
+    <code>rhombus</code> has been used used by and interfaces with software from at least three research groups on several supercomputing clusters. Over 20 Terabytes of data have flowed through <code>rhombus</code>. My tool is free and open for anyone to use in any capacity. &mdash; <a href="https://github.com/seanlabean/rhombus">Github</a>
+</p>
+<p>
+    I've provided several examples of uses for this type of parallelism. Multiprocessing of files is the most intuitive (at least to me). You can also reduce arrays across processes in-place in which each processor will build a (5,) numpy array with index [I] == I, where I is the unique processor rank (e.g. processor 2 will make [0 0 2 0 0]). Then, the root processor will collect all of the arrays and perform the MPI.SUM operation on them. The result (if using 4 processors) will be [0 1 2 3 4]. The MPI.SUM operation can be replaced with any other MPI op code. Similarly, you can reduce a dictionary in-place where each processor is given an empty dictionary and will insert a single key/value pair of str(rank):rank*100 (e.g. processor 2 dictionary is {'2':200}). The root processor then gathers all dictionaries from all processors and updates its own dictionary with the unique pairs.
+</p>
+<p>
+    Note that this method of parallelism also works across multiple nodes of many processors (applicable to most if not all supercomputers) but in those cases you would also need to provide a hostfile to define which processors across the nodes are to be used.
+</p>
+<p>
+    I've joked that the true form of enlightenment when it comes to <code>rhombus</code> is realizing that the parallizable task can be any function, with any number of input args and kwargs. If your task can be condensed into a single function with a discrete amount of input work, it can be parallelized with this routine. Indeed it is quite powerful for such as simple python wrapper.
+</p>
+</main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — Compatible with <a href='https://github.com/seanlabean/PythonProjects/tree/master/Biscuit'>BISCUIT</a></footer></body></html>
