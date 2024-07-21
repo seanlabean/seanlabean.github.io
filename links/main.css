@@ -55,9 +55,9 @@ mark { background-color: #b9b9b9; color: black; }
 @media (prefers-color-scheme: dark) {
     body {background-color: #ececec; color: rgb(0, 0, 0)}
     body header a img { filter: invert(1)}
-    body a { color: rgb(46, 46, 46); }
+    body a { color: rgb(27, 27, 27); }
     body a:hover {color: rgb(255, 255, 255); background-color: #000000;}
-    body a:visited { color: rgb(69, 41, 41); }
+    body a:visited { color: rgb(100, 100, 100); }
     body a.blank:hover { color:unset; background-color: unset;}
     body a.self:before { content:"> " }
     main > pre { overflow:auto; background-color: white; color:#000; padding:10px; }
