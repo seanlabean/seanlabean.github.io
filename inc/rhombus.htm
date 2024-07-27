@@ -10,12 +10,11 @@ category: projects
 <p>
     This implementation of task-based parallel programming consists of one root processor, and any number of worker processors. The root breaks a portion of a job into bite sized chunks (like a single file) which are then sent to the workers. While the workers... well... work, the root sits and waits. When a worker finishes with its allotted chunk, it pings the root node and asks for another chunk, which the root node then provides. Therefore no worker is ever left without something to do.
 </p>
-<figure>
-    <img src="../media/refs/ollyollyollyoxenfree.png" style="width:160px;float:left"/>
-</figure>
+<p><img src="../media/refs/task_based.png"/></p>
 <p>
-    This is fundamentally different and more efficient than data-based parallel processing in which an entire job is split into n equally sized chunks (where n is the number of processors) and sent to the worker processors. In this method, when a worker is done processing, it does not need to ask the root node for any more work (since everything has already been distributed to the workers). Therefore, although the task is being completed in parallel, there is a chance that workers will be left idle while they wait for other workers to finish.
+    This is fundamentally different and more efficient than data-based parallel processing in which an entire job is split into <code>n</code> equally sized chunks (where <code>n</code> is the number of processors) and sent to the worker processors. In this method, when a worker is done processing, it does not need to ask the root node for any more work (since everything has already been distributed to the workers). Therefore, although the task is being completed in parallel, there is a chance that workers will be left idle while they wait for other workers to finish.
 </p>
+<p><img src="../media/refs/data_based.png"/></p>
 <h3>Requirements</h3>
 <p>
     In addition to whichever packages you use for your process you wish to parallelize, you will need to ensure you have working installs of the following:
@@ -29,6 +28,9 @@ category: projects
     Ensure you have a properly configured and installed version of OpenMPI with your <code>PATH</code> and <code>PYTHONPATH</code> correctly pointed to the install directory before attempting to <code>pip install mpi4py</code>.
 </p>
 <h3>For your consideration</h3>
+<figure>
+    <img src="../media/refs/ollyollyollyoxenfree.png" style="width:160px;float:left"/>
+</figure>
 <p>
     In principle task-based parallelism is the more efficient method of parallel programming though with the caveat that any efficiency increase over data-based parallelism tends to zero the more uniform the processing requirements for work chunks. I originally wrote <code>rhombus</code> to aid in the processing of data from astrophysical simulations of star formation, but it is generalizable to any processing tasks that can be strategically chunked.
 </p>
