@@ -10,6 +10,7 @@ category: meta
       <tr><td>BASH command</td><td>Effect</td></tr>
       <tr><td><code>sips -Z {pixels} {image file}</code></td><td>Scales image file such that the maximum dimension is pixels.</td></tr>
       <tr><td><code>sips -s format {format} -s \<br>formatOptions 70 {image file} \<br>--out {new image}</code></td><td>Converts image file into new format (gif, png, heic, jpeg) and saves as new file.</td></tr>
+      <tr><td><code>for i in *.png; do sips -s \<br>format jpeg -s formatOptions 70 "${i}" \<br>--out "${i%png}jpg"; done</code></td><td>In bulk converts files of like extensions to new format (gif, png, heic, jpeg) and saves as new file.</td></tr>
       <tr><td><code>convert {+,-}append *.png out.png</code></td><td>Stacks images horizontally (+) or vertically (-) and saves as new image.</td></tr>
       <tr><td><code>convert -resize 20% -delay 20 -loop 0 *.jpg myimage.gif</code></td><td>Creates a looping gif with 20ms delay between 20% smaller frames.</td></tr>
       <tr><td><code>youtube-dl -x --audio-format mp3 https://www.youtube.com/{video-extension}</code></td><td>extracts audio from any youtube video and saves in mp3 format.</td></tr>
