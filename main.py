@@ -93,6 +93,8 @@ def parse_body(lex_f, fn, cat_dict, proc=True):
             write_nav(f, fn, cat_dict)
         for line in body_lines:
             f.write(line)
+        #write_header(f, fn, head, cat_dict)
+        #write_nav(f, fn, cat_dict)
         f.close()
 
 def write_footer(fn, proc=True):
