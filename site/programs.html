@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;programs</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header><nav>
+<section class='site-nav'>
+<section>
+<h2 class='self'>hobbies</h2>
+<ul class='nobull capital'>
+<li><a href='books.html'>books</a></li>
+<li><a href='digital_art.html'>digital_art</a></li>
+<li><a href='electronics.html'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+<li><mark><a href='programs.html' class='self'>programs</a></mark></li>
+<li><a href='recipes.html'>recipes</a></li>
+<li><a href='running.html'>running</a></li>
+</ul>
+</section>
+<section>
+<h2>projects</h2>
+<ul class='nobull capital'>
+<li><a href='astrea.html'>astrea</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='biscuit.html'>biscuit</a></li>
+<li><a href='rhombus.html'>rhombus</a></li>
+<li><a href='sartoris.html'>sartoris</a></li>
+<li><a href='svanne.html'>svanne</a></li>
+<li><a href='thesis.html'>thesis</a></li>
+</ul>
+</section>
+<section>
+<h2>posts</h2>
+<ul class='nobull capital'>
+<li><a href='bent_data.html'>bent_data</a></li>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='iceland.html'>iceland</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+<li><a href='ml_basics.html'>ml_basics</a></li>
+<li><a href='people.html'>people</a></li>
+<li><a href='rat_race.html'>rat_race</a></li>
+<li><a href='the_story.html'>the_story</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='changes.html'>changes</a></li>
+<li><a href='current.html'>current</a></li>
+</ul>
+</section>
+<section>
+<h2>meta</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='meta-meta.html'>meta-meta</a></li>
+<li><a href='myself.html'>myself</a></li>
+<li><a href='resume.html'>resume</a></li>
+<li><a href='tools.html'>tools</a></li>
+</ul>
+</section>
+<section><ul class='nobull capital'><li><a href='http://users3.smartgb.com/g/g.php?a=s&i=g36-35839-fb' target='_blank' rel='noopener noreferrer'><img alt='Guestbook' border='0' src='../media/refs/gb_80x40.gif' width='80' height='40'></a></li></section>
+</details></nav>
+<!-- Generated file, do not edit -->
+
+<main>
+<h2>Programming</h2>
+Come back later for a finished page. - Sean &#9782;
+<h3>Maude</h3>
+<p><a href="https://maude.lcc.uma.es/maude-manual/maude-manual.html">Maude</a> is based on rewriting logic, where computations are performed by applying rewrite rules to transform terms into other terms. It is often used in academic and research contexts for tasks like protocol verification, theorem proving, and system modeling.</p>
+
+<p>As someone who is a self-taught Python programmer, I initially found it quite difficult to dissect and understand the fundamentals of Maude. I've found this analogy to be useful: think of Maude's rewrite rules as similar to Python's <code>if</code> statements combined with transformations.</p>
+
+<p>Imagine a traffic simulator, complete with car movement based on the state of traffic light colors. In Python, I might write code that checks the state of the lights and updates the cars' behavior accordingly: </p>
+<pre>
+    if traffic_light == "green":
+        car.move_forward()
+    elif traffic_light == "red":
+        car.stop()
+</pre>
+
+<p>In Maude, a rewrite rule accomplishes something similar but works as a "universal traffic controller" that watches the state of the entire system and updates it according to predefined rules. Instead of explicitly calling methods like in Python, the rules automatically fire when their conditions are met. A rewrite rule in Maude to this effect may look like:</p>
+<pre>
+    rl [move-car] : < car : Car | state: stopped > < light : TrafficLight | state: green >
+                    => < car : Car | state:moving > < light : TrafficLight | state: green > .
+</pre>
+
+<p>This means: <i>If there is a car that is stopped at a light that is green, rewrite the system state such that the car is moving.</i></p>
+
+</main><footer><hr /><b>Sean C. Lewis</b> © 2024 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — Compatible with <a href='https://github.com/seanlabean/PythonProjects/tree/master/Biscuit'>BISCUIT</a></footer></body></html>
