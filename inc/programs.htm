@@ -1,0 +1,29 @@
+---
+category: hobbies
+---
+
+<main>
+<h2>Programming</h2>
+Come back later for a finished page. - Sean &#9782;
+<h3>Maude</h3>
+<p><a href="https://maude.lcc.uma.es/maude-manual/maude-manual.html">Maude</a> is based on rewriting logic, where computations are performed by applying rewrite rules to transform terms into other terms. It is often used in academic and research contexts for tasks like protocol verification, theorem proving, and system modeling.</p>
+
+<p>As someone who is a self-taught Python programmer, I initially found it quite difficult to dissect and understand the fundamentals of Maude. I've found this analogy to be useful: think of Maude's rewrite rules as similar to Python's <code>if</code> statements combined with transformations.</p>
+
+<p>Imagine a traffic simulator, complete with car movement based on the state of traffic light colors. In Python, I might write code that checks the state of the lights and updates the cars' behavior accordingly: </p>
+<pre>
+    if traffic_light == "green":
+        car.move_forward()
+    elif traffic_light == "red":
+        car.stop()
+</pre>
+
+<p>In Maude, a rewrite rule accomplishes something similar but works as a "universal traffic controller" that watches the state of the entire system and updates it according to predefined rules. Instead of explicitly calling methods like in Python, the rules automatically fire when their conditions are met. A rewrite rule in Maude to this effect may look like:</p>
+<pre>
+    rl [move-car] : < car : Car | state: stopped > < light : TrafficLight | state: green >
+                    => < car : Car | state:moving > < light : TrafficLight | state: green > .
+</pre>
+
+<p>This means: <i>If there is a car that is stopped at a light that is green, rewrite the system state such that the car is moving.</i></p>
+
+</main>
