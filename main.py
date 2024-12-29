@@ -16,14 +16,12 @@ def init_site_file(lex_f):
     with open(DEST+'/'+fn+'.html', 'w') as f:
         return f, fn
 
-def write_header(f, fn, head, cat_dict):
+def write_header(fn):
     with open(DEST+'/'+fn+'.html', 'w') as f:
         f.write("<!DOCTYPE html><html lang='en'>")
         f.write("<meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/>")
-        f.write("<title>" + NAME + "&mdash;" + fn + "</title></head>")
+        f.write(f"<title>{NAME}&mdash;{fn}</title></head>")
         f.write("<body>")
-        if len(head)>0:
-            head = head[0].split(':')[1].strip()
         if fn == "home":
             f.write("<header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header>") #<img src='../media/slewis_wiki.gif' width='600' height='80'><br></header>")
         else:
@@ -33,22 +31,20 @@ def write_header(f, fn, head, cat_dict):
             #f.write(line)
         f.close()
     
-def write_nav(f, fn, cat_dict):
+def write_nav(fn, cat_dict):
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<nav>\n")
-        #f.write("<summary>Navigator</summary>\n")
         f.write("<section class='site-nav'>\n")
-        #f.write("<section>\n<ul class='nobull'>\n<li><a href='home.html'>Back Home</a></li></ul>\n</section>\n")
         # find this filename as a value in the category dict. Return the category.
         match_cat = next((key for key, values in cat_dict.items() if fn in values), None)
         # make nav bar for each page. note which category the current page belongs AND mark current page in bar
         for cat, pages in cat_dict.items():
             if cat == 'no-proc': continue
             f.write("<section>\n")
-            f.write("<h2 class='self'>"+cat+"</h2>\n") if cat == match_cat else f.write("<h2>"+cat+"</h2>\n")
+            f.write(f"<h2 class='self'>{cat}&nbsp;</h2>\n") if cat == match_cat else f.write(f"<h2>{cat}&nbsp;</h2>\n")
             f.write("<ul class='nobull capital'>\n")
-            for page in sorted(pages): f.write("<li><mark><a href='"+page+".html' class='self'>" + page + "</a></mark></li>\n") \
-                if page == fn else f.write("<li><a href='"+page+".html'>" + page + "</a></li>\n")
+            for page in sorted(pages): f.write(f"<li><mark><a href='{page}.html' class='self'>{page}</a></mark></li>\n") \
+                if page == fn else f.write(f"<li><a href='{page}.html'>{page}</a></li>\n")
             f.write("</ul>\n")
             f.write("</section>\n")
         f.write("<section><ul class='nobull capital'>")
@@ -68,7 +64,7 @@ def write_toc_body(cat_dict):
         f.write("<article><p>")
         f.write("<ul class='nobull'>")
         for page in sorted([value for values in cat_dict.values() for value in values]):
-            f.write("<li><a href='"+page+".html'>"+page+"</a></li>")
+            f.write(f"<li><a href='{page}.html'>{page}</a></li>")
         f.write("</ul>")
         f.write("</p></article></main>")
         f.close()
@@ -89,12 +85,11 @@ def parse_body(lex_f, fn, cat_dict, proc=True):
         inc.close()
     with open(DEST+'/'+fn+'.html', 'a') as f:
         if proc:
-            write_header(f, fn, head, cat_dict)
-            write_nav(f, fn, cat_dict)
+            write_header(fn)
+            write_nav(fn, cat_dict)
         for line in body_lines:
             f.write(line)
-        #write_header(f, fn, head, cat_dict)
-        #write_nav(f, fn, cat_dict)
+
         f.close()
 
 def write_footer(fn, proc=True):
@@ -102,7 +97,6 @@ def write_footer(fn, proc=True):
         return
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<footer><hr />")
-        #fpedited(f, srcpath)
         f.write("<b>Sean C. Lewis</b> © 2024 — ")
         f.write("<a href='" + LICENSE + "' target='_blank'>BY-NC-SA 4.0</a> — ")
         f.write("Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — ")
@@ -135,7 +129,7 @@ def preparse_header(lex_f, fn, categories):
     return categories
 
 def write_table_of_contents(cat_dict):
-    write_header(None, TABLEOFCONTENTS, [], cat_dict)
+    write_header(TABLEOFCONTENTS)
     write_toc_body(cat_dict)
     write_footer(TABLEOFCONTENTS)
     return
