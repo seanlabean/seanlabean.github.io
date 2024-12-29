@@ -75,22 +75,24 @@ mark { background-color: #b9b9b9; color: black; }
   @media (max-width: 1100px) {
     nav { width: 100%; }
       nav .site-nav section { float: left; margin: 0 10px 10px 0; }
+      nav .site-nav section:nth-child(10n + 1) { clear: left; }
   }
   @media (max-width: 1100px) and (min-width: 651px) {
     nav .site-nav section { width: calc(25% - 10px); }
-    nav .site-nav section:nth-child(4n + 1) { clear: left; }
+    nav .site-nav section:nth-child(5n + 1) { clear: left; }
   }
   
   @media (max-width: 650px) and (min-width: 501px) {
     nav .site-nav section { width: calc(33% - 10px); }
-    nav .site-nav section:nth-child(3n + 1) { clear: left; }
+    nav .site-nav section:nth-child(5n + 1) { clear: left; }
   }
   
   @media (max-width: 500px) and (min-width: 351px) {
     nav .site-nav section { width: calc(50% - 10px); }
-    nav .site-nav section:nth-child(2n + 1) { clear: left; }
+    nav .site-nav section:nth-child(5n + 1) { clear: left; }
   }
   
   @media (max-width: 350px) {
     nav .site-nav section { width: 100%; }
+    nav .site-nav section:nth-child(5n + 1) { clear: left; }
   }
