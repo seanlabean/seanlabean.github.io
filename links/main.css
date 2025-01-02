@@ -32,7 +32,7 @@ main a:after { content:"}" }
 main a.blank:before { content:"" }
 main a.blank:after { content:"" }
 main > * { max-width: 600px; margin-bottom: 30px }
-main code {font-family: monospace;}
+main code {font-family: monospace; font-size: 130%;}
 
 
 footer { line-height: 30px; clear:both; padding:45px; }
