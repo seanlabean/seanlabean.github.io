@@ -37,8 +37,12 @@ def write_nav(fn, cat_dict):
         f.write("<section class='site-nav'>\n")
         # find this filename as a value in the category dict. Return the category.
         match_cat = next((key for key, values in cat_dict.items() if fn in values), None)
+        # reorder categories dictionary alphabetically so it is written that way to the nav
+        #key_order = sorted(sorted(cat_dict, key=cat_dict.get))
+        key_order = ["projects", "hobbies", "posts", "meta", "timeline"] # hardcode
+        cat_dict_sorted = {key: cat_dict[key] for key in key_order}
         # make nav bar for each page. note which category the current page belongs AND mark current page in bar
-        for cat, pages in cat_dict.items():
+        for cat, pages in cat_dict_sorted.items():
             if cat == 'no-proc': continue
             f.write("<section>\n")
             f.write(f"<h2 class='self'>{cat}&nbsp;</h2>\n") if cat == match_cat else f.write(f"<h2>{cat}&nbsp;</h2>\n")
