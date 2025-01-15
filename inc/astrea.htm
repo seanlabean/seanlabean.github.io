@@ -17,6 +17,23 @@ category: projects
     <p>
         I am of the opinion that the best and most meaningful personal blogs are born out of simplicity. In this spirit, I designed my this website manager which forces me to be creative given a set of simple and restrictive rules, resulting in a relatively extensive website with no Javascript whatsoever. I am exceedingly impressed by what I can do with html and css that I write by hand rather than what I can build using a paid website service. In addition, because Astrean websites are barebones, they require the minimum amount of hardware capabilities on a visitor's end, so your website can be easily viewed by anyone anywhere. A follow-up project that sprouted from the same philosophical flavor is my micro browser <a href="site/biscuit.html">BISCUIT</a>. I encourage others to give BISCUIT and Astrea a try. Discover what you can make when you have full control over your website/blog/digital garden.
     </p>
+<pre>
+    astrea/
+        |
+        ├── inc/
+        |   ├── contains .htm formatted files
+        ├── site/
+        |   ├── main.py writes final .html files here
+        ├── links/
+        |   ├── .css and other theming files
+        ├── media/
+        |   ├── images and other files
+        |
+        ├── index.html
+        ├── 404.html
+        ├── main.py
+        └── build.sh
+    </pre>
 
     <p>
         Astrea works by first detecting the <code>.htm</code> files within the <code>inc/</code> folder, making a catalogue of them and their category. Each file's category is defined within the file itself between the <code>---</code> markers. Astrea detects all unique occurrences of a category and determines the membership of all files.  Astrea then parses the <code>.htm</code> files. The <code>.htm</code> format requires users to write, in <code>HTML</code>, all of the file contents within the <code>&lt;main&gt;</code> element. Astrea appends text requirements for the <code>HTML</code> format including the navigation bar which contains all file categories and links to the other site files. Finally, a <code>&lt;footer&gt;</code> is added to each file. The post-processsed files are saved in </code>site/</code>. The result are fully functional webpages with the ability to navigate to and from each page. In this sense, a website built with Astrea is a mighty, highly customizable skeleton, and the muscle and fat and pretty bits can be slathered on after the fact with .css magic.
