@@ -105,4 +105,29 @@
     Above is one such example of this. I've used a Sobel filter array mask to detect edges in the image and then cycle through the masked image to then sort the pixels within regions that are not broken up by an edge. By playing around with the sorting region threshold and stitching the images into a gif, I can achieve this nice glitchy effect. You can try the same here &mdash; <a href="www.github.com/seanlabean/sonoshee.git">Github</a>
 </p>
 
+<h3>ICN files: To Poodle a Noodle</h3>
+<figure>
+    <img src="../media/refs/noodle-ref1.png" style="width:150px;float:right"/>
+</figure>
+<p>
+    When working with 1-bit images, image files can be pared down to a considerably simpler format. The <a href="https://wiki.xxiivv.com/site/icn_format.html">ICN file format</a> is specifically designed to be as lightweight as possible to represent 1-bit graphics. It is used throughout the Varvara ecosystem and is the file format output by the Noodle 1-bit drawing program. Given 4 pixels, there are 16 possible states corresponding to the permutations of pixels being on/off. Hence, a line of 4 pixels can be represented by a hexidecimal 0 through f. From there, an 8x8 grid of pixels is represented by 16 hexidecimal digits with each line of 8 pixels represented by a hex-pair for the left and right halves of the line. Since a hex-pair makes a byte, an 8x8 ICN tile represents all 64 of its internal components in only 8 bytes.
+</p>
+<p>
+    Putting all this together, these 8 byte tiles can then be concatenated together into a larger images. It's through this understanding of the ICN format that i designed <a href="https://github.com/seanlabean/sonoshee/blob/main/poodle.py">poodle</a>, a 50-line python script which converts ICN files to PNG format. It works by reading in an ICN file as a bytestream which is then cut into 8-byte chunks. Each chunk is converted to a little 8x8 pixel PNG using the <code>pillow</code> python library. After, the collection of PNG tiles are squeezed into rows which then stacked into the final image. The 1-bit images displayed here were made in Noodle and converted to PNG with poodle.
+</p>
+<div align="center">
+<figure>
+    <img src="../media/refs/noodle-ref2.png" style="width:325px;"/>
+</figure>
+</div>
+<p>
+    I also found that 1-bit PNG images can be very easily scaled in size without any weird interpolation effects. A quick bash function packed into a simple alias does the trick.
+</p>
+<pre>
+    imscale() { convert "$1" -interpolate Integer -filter point 
+                -resize ""$2"%" "$2""$1"; }
+
+    # To scale pdl.png up by 500%
+    $ imscale pdl.png 500
+</pre>
 </main><footer><hr /><b>Sean C. Lewis</b> © 2025 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — Compatible with <a href='https://github.com/seanlabean/PythonProjects/tree/master/Biscuit'>BISCUIT</a></footer></body></html>
