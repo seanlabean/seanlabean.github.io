@@ -1,7 +1,57 @@
 ---
-category: no-proc
+category: projects
 ---
 <main>
     <h2>Audio, Visual, Textual</h2>
-    <p>Sonoshee is a collection of art and art-adjacent scipts I've written for a number of side projects just for fun.</p>
+    <p>Sonoshee is a collection of art and art-adjacent scipts I've written for a number of side projects just for fun. These project are automated in nature, driven by a python script or two. For a more in-depth look at manual image manipulation, see my <a href="bent_data.html">bent data</a> post.</p>
+    <p><a href="https://www.github.com/seanlabean/sonoshee">Github</a></p>
+    <h3>Visual</h3>
+    <hr>
+    <p><b>Poodle</b> is an esoterically useful byte-to-png converter specifically designed around the <a href="https://wiki.xxiivv.com/site/icn_format.html">.icn file format</a>. Currently, Poodle is even more specialized around <code>.icn</code> outputs from <a href="https://wiki.xxiivv.com/site/noodle.html">Noodle</a> a 1-bit minimalist drawing app.
+    
+    <p>To Poodle a Noodle: <code>python poodle.py -i {Noodle .icn file}</code> <br> I recommend making a bash alias: <code>alias poodle='python {path_to_poodle.py} -i'</code> so that you can Poodle Noodles more easily: <code>poodle {file}</code></p>
+    
+    <div align="center">
+        <figure>
+            <img src="../media/refs/map.png" style="width:85%;"/>
+        </figure>
+    </div>
+
+    <p><b>pixel-sort</b> is a pixel sorter that utilizes Sobel filter masking to selectively sort image pixels. With several scale factor knobs, image series can be generated and stitched into glitchy gifs. Without filter masking, images are smeared by organizing pixels by their perceived luminosity.</p>
+    <div align="center">
+        <figure>
+            <img src="../media/refs/sonoshee_glitched.gif" style="width:85%;"/>
+        </figure>
+    </div>
+
+    <p><b>tinker</b> is a self-contained python script which iteratively constructs visualizations of a chaotic dynamical system: <a href="https://en.wikipedia.org/wiki/Tinkerbell_map">The Tinkerbell Map</a>.</p>
+
+    
+    <p>The Tinkerbell attractor can be described by (in LaTeX):
+    
+<pre>
+    $$x_{n+1}=x_{n}^{2}-y_{n}^{2}+ax_{n}+by_{n}$$
+    
+    $$y_{n+1}=2x_{n}y_{n}+cx_{n}+dy_{n}$$
+</pre></p>
+    
+<p>With this simple definition, and a few tens of thousands of iterations, the Map becomes visible. A set of chaotically related points, never diverging far from their initial starting point and yet never repeating.</p>
+    
+<div align="center">
+    <img src="../media/refs/tinkerbell.png" style="width:85%;"/>
+</div>
+<h3>Textual</h3>
+<hr>
+<p><b>OhHiMarkov</b> is a one-ahead markov-chain constructor for given <code>.txt</code> files. The data structure constructor works as follows: for each word in the file, record the following word in a hashtable. That's it! Then, traversing the data structure is simple, for some <code>n</code> number of words, randomly start at a key within the structure, record the associated value, then use that value as the next hashtable key and randomly choose from its paired values. Repeat <code>n</code> times.</p>
+
+<p>Sample sentences after consuming the contents of the entire text content of the blog you are currently reading:
+<ul>
+    <li>Departure from determinism and rigid logic is difficult to accept, let alone a tree within this desert.</li>
+    <li>Drove for a lunch buffet where the chefs seemed to be a lovely constant in my life.</li>
+</ul>
+</p>
+<p><b>periodic</b> is a CLI tool which allows for quick lookups of any element from the periodic table.</p>
+<div align="center">
+    <img src="../media/refs/periodictable.png" style="width:85%"/>
+</div>
 </main>
