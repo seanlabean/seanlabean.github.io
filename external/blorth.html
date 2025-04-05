@@ -1,0 +1,109 @@
+<!DOCTYPE html><head><title>blorth.bth</title></head><body>
+<style> body { padding: 30px; text-align: absolute center; } </style>
+
+<a href=https://slewis.wiki/site/home.html>Back Home </a> 
+<h2>Blorth </h2>
+<p>Blorth is a custom Forth-based interpreter which enables the embedding of Forth commands within a text document and outputs HTML formatted files (one of which you are reading right now). </p>
+<p>
+"Data is code." A powerful mantra in an era when data are considered only insofar as their ability to be consumed. Indeed, large language models have taken the exact opposite position: "Code is data". Forth enables orthogonal perspectives in other ways too, the stack-based nature of the language requires the programmer to be hyper-aware of the state of the processes they write. Efficiency and care become unspoken yet obvious requirements of Forth programs. Programmers exposed only to modern languages may never consider the implications of creating, populating, and modifying a dataframe Megabytes in size. Of course, this is isn't a blunder or a misgiving on their part, such nonchalant behavior is encouraged by every language of the 21st century. It makes life easier, and the resources available to even beginners have redefined "efficiency" and "considerate programming" so many times and to such extreme degress that they have become antonyms of their original selves from the mid 1900s. </p>
+<p>
+The beauty of Forth is in it's low-level nature. Being half a step above Assembly predicates the strict memory management and "walking on eggshells" approach to programming described earlier (indeed, if C gives you just enough rope to hang yourself with, Forth gives you a loaded shotgun and places the barrel neatly behind your teeth). Yet, a half-step above Assembly means Forth enables you to do almost anything. You can take full advantage of the polymorphic nature of the language and define your own custom syntax, abstracting the language from the most basic of stack manipulations to a subroutine-based code that reads almost like a poem. </p>
+<p>
+I've written a Forth-based interpreter of custom Markdown-like .bth files whose text executes code in the Forth language itself. This in A sample .bth file might look something like this:</p><blockquote><pre>^html
+^h2 A beautiful heading ^h2
+^p A paragraph about Forth ^+p
+Another paragraph about Forth ^/p
+^href https://slewis.wiki link to my blog ^/href
+^/html
+</pre></blockquote> <p>Where the <code>^</code> sign informs the Forth program to break out of the continuous character dump to the outfile buffer to execute the Forth word that follow. For example, the program will interpret <code>^href</code> as the <i>word</i> <code>href</code> which itself is defined as outputing the string <code>"&lt;a href=" </code> as well as the following token, <code>https://slewis.wiki</code> in the example above, then closing the <code>a</code> element with <code>">"</code> . The following text "link to my blog" is then read into the output buffer and the <code>a</code> element is closed with <code>^/href</code> . </p>
+<p>
+A curious self-referencial loop is taking place here, in that I am describing the program that parsed and wrote this text I am writing into the text you are reading which itself can be parsed by the same program. I don't really know what to make of that but it tickles me. To take it to the extreme, the following is the code necessary to process the .bth sample and is the same code that constructs this page. About 60 lines of Forth. </p>
+<blockquote><pre>( configuration )
+: srcfile	S" blorth.bth" ;
+: outfile 	S" blorth.html" ;
+
+( input buffer )
+VARIABLE 'src ( address )
+VARIABLE #src ( size of buffer )
+VARIABLE 'out
+VARIABLE #out
+
+VARIABLE fh
+
+: open      srcfile R/O OPEN-FILE THROW fh ! ;
+: close     fh @ CLOSE-FILE THROW ;
+: read      BEGIN HERE 4096 fh @ READ-FILE THROW DUP ALLOT 0= UNTIL ;
+: gulp 	    open read close ;
+: start     HERE 'src ! ;
+: finish    HERE 'src @ - #src ! ;
+: slurp     start gulp finish ;
+: open      outfile R/W CREATE-FILE THROW fh ! ;
+: write     'out @ #out @ fh @ WRITE-FILE THROW ;
+: spew 	    open write close ;
+
+( command dispatcher)
+variable offset
+variable 'token
+variable #token
+
+: addr      offset @ 'src @ + ;
+: chr 	    addr C@ ;
+: -ws 	    32 U&gt; ;
+: advance   1 offset +! ;
+: seek 	    begin chr -ws WHILE advance REPEAT ;
+: token     addr seek addr over - advance 2DUP #token ! 'token ! ;
+: .token    'token @ #token @ TYPE ;
+: error     CR CR .token -1 ABORT" Command was not found" ;
+: command   token sfind IF EXECUTE ELSE error THEN ;
+
+( vectored output )
+
+: b-emit	C, ;
+: b-type	BEGIN DUP WHILE OVER C@ EMIT 1 /string REPEAT 2DROP ;
+: buffered	['] b-emit IS EMIT ['] b-type IS TYPE ;
+: interactive	['] (EMIT) IS EMIT ['] (TYPE) IS TYPE ;
+: start		HERE 'out ! buffered ;
+: finish 	HERE 'out @ - #out ! interactive ; 
+
+( process input buffer )
+
+: rdrop     POSTPONE R&gt; POSTPONE DROP ; IMMEDIATE
+: call 	    &gt;R ;
+: entity    [CHAR] &amp; emit type [CHAR] ; emit ;
+: ===&gt; 	    OVER = IF DROP R&gt; call entity THEN rdrop ; ( custom syntax; most benefits of polymorphism )
+: either&amp;   [CHAR] &amp; ===&gt; S" amp" ; ( mapping symbols to entities )
+: or&lt;	    [CHAR] &lt; ===&gt; S" lt" ;
+: or&gt;	    [CHAR] &gt; ===&gt; S" gt" ;
+: orESC     DUP [CHAR] ^ = IF DROP command RDROP EXIT THEN ;
+: interpret chr advance either&amp; or&lt; or&gt; orEsc ( else ) emit ;
+: -end 	    offset @ #src @ U&lt; ;
+: format    0 offset ! BEGIN -end WHILE interpret REPEAT ;
+: process   start format finish ;
+
+( commands )
+: html	    ." &lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;" srcfile TYPE ." &lt;/title&gt;&lt;/head&gt;&lt;body&gt;" CR ;
+: /html     ." &lt;/body&gt;&lt;/html&gt;" ;
+: p	    ." &lt;p&gt;" ;
+: /p	    ." &lt;/p&gt;" ;
+: +p	    /p CR p ;
+: h2	    ." &lt;h2&gt;" ;
+: /h2	    ." &lt;/h2&gt;" ;
+: href	    ." &lt;a href=" token TYPE ." &gt;" ;
+: /href	    ." &lt;/a&gt;" ;
+
+( kick off procedures )
+: blorth         slurp process spew ;
+blorth BYE
+</pre></blockquote> 
+<p>This code is an extension of the sample provided by Samuel A Falvo II in a tutorial video from 2008. </p>
+<h2>Forth Basics </h2><p>The syntax of Forth is very foreign to programmers like me. I taught myself Python and have used it professionally for a decade. Forth, in comparison, approaches programming upside down and inside out. Here are some quick syntax and convention notes that I frequently forget </p><blockquote><pre>( ! - store ... ( value address -- , STORE value TO address in memory )
+( @ - fetch ... ( address -- value , FETCH value FROM address in memory )
+( ? - look  ... ( address -- , LOOK at variable )
+( VARIABLE  ... ( &lt;name&gt; -- , define a 4 byte memory storage location )
+
+'var ( address )
+#var ( size )
+
+: start   HERE 'var ! ;
+: finish  HERE 'var @ - #var ! ;
+</pre></blockquote> </body></html>
