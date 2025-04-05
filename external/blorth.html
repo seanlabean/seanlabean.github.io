@@ -70,7 +70,7 @@ variable #token
 : rdrop     POSTPONE R&gt; POSTPONE DROP ; IMMEDIATE
 : call 	    &gt;R ;
 : entity    [CHAR] &amp; emit type [CHAR] ; emit ;
-: ===&gt; 	    OVER = IF DROP R&gt; call entity THEN rdrop ; ( custom syntax; most benefits of polymorphism )
+: ===&gt; 	    OVER = IF DROP R&gt; call entity THEN rdrop ;
 : either&amp;   [CHAR] &amp; ===&gt; S" amp" ; ( mapping symbols to entities )
 : or&lt;	    [CHAR] &lt; ===&gt; S" lt" ;
 : or&gt;	    [CHAR] &gt; ===&gt; S" gt" ;
@@ -81,7 +81,8 @@ variable #token
 : process   start format finish ;
 
 ( commands )
-: html	    ." &lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;" srcfile TYPE ." &lt;/title&gt;&lt;/head&gt;&lt;body&gt;" CR ;
+: html	    ." &lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;" srcfile TYPE ." 
+	    &lt;/title&gt;&lt;/head&gt;&lt;body&gt;" CR ;
 : /html     ." &lt;/body&gt;&lt;/html&gt;" ;
 : p	    ." &lt;p&gt;" ;
 : /p	    ." &lt;/p&gt;" ;
