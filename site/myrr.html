@@ -1,4 +1,4 @@
-<!DOCTYPE html><head><title>myrr.bth</title></head><body>
+<!DOCTYPE html><head><title>myrr.html</title></head><body>
 <style> body { padding: 30px; text-align: absolute center; } </style>
 
 <a href=https://slewis.wiki/site/home.html>Back Home </a> 
@@ -26,7 +26,7 @@ And Forth commands can be nested within themselves in the source text. Hence, yo
 <p>
 To take the previous meta self-references to the extreme, the following is the code necessary to process the .bth sample and is the same code that constructs this page. About 60 lines of Forth. </p>
 <blockquote><pre>( configuration )
-: srcfile	S" myrr.bth" ;
+: srcfile	S" myrr.mrr" ;
 : outfile 	S" myrr.html" ;
 
 ( input buffer )
@@ -77,7 +77,7 @@ variable #token
 : rdrop     POSTPONE R&gt; POSTPONE DROP ; IMMEDIATE
 : call 	    &gt;R ;
 : entity    [CHAR] &amp; emit type [CHAR] ; emit ;
-: ===&gt; 	    OVER = IF DROP R&gt; call entity THEN rdrop ;
+: ===&gt; 	    OVER = IF DROP R&gt; call entity THEN rdrop ; ( custom syntax; most benefits of polymorphism )
 : either&amp;   [CHAR] &amp; ===&gt; S" amp" ; ( mapping symbols to entities )
 : or&lt;	    [CHAR] &lt; ===&gt; S" lt" ;
 : or&gt;	    [CHAR] &gt; ===&gt; S" gt" ;
@@ -88,8 +88,7 @@ variable #token
 : process   start format finish ;
 
 ( commands )
-: html	    ." &lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;" srcfile TYPE 
-	    ." &lt;/title&gt;&lt;/head&gt;&lt;body&gt;" CR ;
+: html	    ." &lt;!DOCTYPE html&gt;&lt;head&gt;&lt;title&gt;" srcfile TYPE ." &lt;/title&gt;&lt;/head&gt;&lt;body&gt;" CR ;
 : /html     ." &lt;/body&gt;&lt;/html&gt;" ;
 : p	    ." &lt;p&gt;" ;
 : /p	    ." &lt;/p&gt;" ;
@@ -114,4 +113,23 @@ myrr BYE
 
 : start   HERE 'var ! ;
 : finish  HERE 'var @ - #var ! ;
+</pre></blockquote> 
+<h2>Vim hopping with <code>gforth</code> </h2><p>Forth's extensibility is so absolute that it is entirely within the power of a creative and fearless programmer to break the logic flow of the language itself to will a procedure into existence. Take Forth's interactive environment for example. A typical workflow likely has the following steps: <ul>
+<li>call <code>gforth</code> on you file </li>
+
+<li>test some functions, inspect the stack, etc. </li>
+
+<li>close out of gforth interative. </li>
+
+<li>call <code>vim</code> on your file, makes some edits. </li>
+
+<li>back to step one. </li>
+</ul>
+Annoying. Big time. Way too many key strokes. Most users will engage with Forth in this way. There's a hacky way to get around this by cleverly redefining the state of the <i>dictionary</i> (that's the collection of <i>words</i> constituting the Forth function-space). In doing so, we can call a custom word to start up a <code>vim</code> instance of the Forth file we are currently running, make edits to the file, and upon closing, update the dictionary state to recompile any edited words. Now, we can hop in and out of <code>vim</code> from within the <code>gforth</code> interactive environment! </p><blockquote><pre>: empty 	s" ---marker--- marker ---marker---" evaluate ;
+: edit		s" vim myrr.fs system ;
+: run 		s" myrr.fs" included ;
+: ecr		edit run ;
+
+( &lt;--- empty execute restores dictionary here )
+marker ---marker---
 </pre></blockquote> </body></html>
