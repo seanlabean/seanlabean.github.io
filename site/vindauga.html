@@ -1,32 +1,92 @@
-<!DOCTYPE html><head><title>vindauga.html</title></head><body>
-<style> body { padding: 30px; text-align: absolute center; width: 45%} </style>
-
-<a href=https://www.slewis.wiki/site/home.html>Back Home </a> 
-<h2>Vindauga </h2>
-<h2>Dev Log </h2><p><b>03J05</b> - I also figured out how to render text using the SDL ttf library. The exact calls are much easier than I expected. Previously I had been using a monospaced image of the alphabet and strategically slicing portions of the image to display. Presumably that is what the ttf processing does in principle, but in a very digestible way. I can now set and display a unique line of text for each Scene.
-</p>
-<p>As I was figuring out how to use the SDL ttf library, I came across some decade's old comments mentioning the importance of "destroying textures". Up until this point, I had not explicitly thought about the memory management requirements of SDL. In the past I had worked with a dynamic linked list of entities that would constantly be updated with chunks of memory freed or allocated as entities were removed/added to the struct. But I don't recall destroying any textures. As I understand it now, when a texture is rendered, a new portion of memory is allocated. A texture can correspond to a Scene image, the rendered Text, or any number of things. Perhaps erroneously, my game loop renders these textures once per frame. My not strategically destroying the textures, vindauga's memory footprint grows every frame. Indeed, when looking at the RAM usage, vindauga was adding about 10MB of required RAM every second, even on an idle Scene. I was very happy to discover that I could easily mangage this leak by clearing the SDL renderer at the beginning of every game loop. Now the RAM usage holds constant!
-</p>
-<p>At this point, I call the core functionality of vindauga complete.
-</p>
-<p><figure><img src='../media/refs/vindauga_logo.png'style='height:250px;'/></figure></p>
-<p><b>03I10</b> - After several failed attempts at creating a dynamically modified linked list, I gave up. I understand the concept well enough but I was running into compilation errors that I failed to understand fully including dreaded segfaults. This was a disheartening experience and I took a few days to reorient myself. In the process, I came across an OpenGL header-only game framework called <a href=https://github.com/MrFrenik/gunslinger>gunslinger </a> which seems really interesting. I'd like tomake a falling-sands game next using this framework, more on this later. Coming back to vindauga, I came to realize that for my immediate purposes I was greatly overcomplicating things. All I needed was to be able to preserve and reference back to the sceneID state as I navigate from one Scene to another. All this really requires is a simple array. Each time I navigate to a new Scene, append its ID to the array. To determine which scene to render/interpret, simply read the final element of the array. When the user navigates backwards from a Scene, pop the last element from the array. Simple! I had to tweak a few things like adding a delay when right-clicking to go back so that the game loop does not pick up the right-click button being down for more than 1 frame as then mulitple Scenes will be navigated.
-</p>
-<p><b>03I05</b> - Next up: a data tree for the Scenes! I think having one central point of truth for Scene navigation will be nice, though it could also be possible to have a single dynamic list, which does not need to know about a central point of Scene organization. I don't think either one of these is the <i>right</i> way of doing this, merely a matter of preference at this point. I guess a central navigation map would be more efficient computationally. Secondly, I'd like to make a hover effect for when you are over a clickable item. This should be easy, just move the check Left-Click logic into the mouse position block for each Scene, and then call a <code>draw()</code> before checking for clicks. </p>
-<p><ul>
-<li>Hover effect -- <b>03I08</b> I was able to define an place a rectangle around each clickable item when moused over. I decided to construct a new struct to handle the rectangle bounds so they are easy to update and modify. Doing so changes both a clickable region and the corresponding rectangle simultaneously. <b>03I06</b> proof of concept. Mouse position within clickable region spawns a rectangle. Maybe have these permanently on for debug mode?</li>
-
-<li>Navigation tree -- <b>03I10</b> Tried my hand at constructing a linked list that I can append to/pop from. The appending seems to work well, I can see the array elements update as I click through the images. I do not yet know how to access the tail value of the array though, which is frustrating. I do think this is the proper route to go since I can easily swap integer values for structs eventually. I'll try again later, I'll try to mimic Parallel Realities' implementation?</li>
+<!DOCTYPE html><html lang='en'><meta charset='utf-8'/><meta name='viewport' content='width=device-width, inital-scale=1'/><link href='../links/main.css' type='text/css' rel='stylesheet'/><link href='../media/icon.png' type='image/png' rel='shortcut icon'/><title>S. C. Lewis&mdash;vindauga</title></head><body><header><a href='home.html'><img src='../media/main.png' width='160' height='80'></a>&nbsp;&nbsp;&nbsp;&nbsp;<img src='../media/e3.JPG' alt='2024 eclipse timelapse by Ashley Lian' width='600' height='55'></header><nav>
+<section class='site-nav'>
+<section>
+<h2 class='self'>projects&nbsp;</h2>
+<ul class='nobull capital'>
+<li><a href='astrea.html'>astrea</a></li>
+<li><a href='atavata.html'>atavata</a></li>
+<li><a href='biscuit.html'>biscuit</a></li>
+<li><a href='myrr.html'>myrr</a></li>
+<li><a href='pws.html'>pws</a></li>
+<li><a href='rhombus.html'>rhombus</a></li>
+<li><a href='sartoris.html'>sartoris</a></li>
+<li><a href='sonoshee.html'>sonoshee</a></li>
+<li><mark><a href='vindauga.html' class='self'>vindauga</a></mark></li>
 </ul>
+</section>
+<section>
+<h2>hobbies&nbsp;</h2>
+<ul class='nobull capital'>
+<li><a href='534C.html'>534C</a></li>
+<li><a href='birding.html'>birding</a></li>
+<li><a href='books.html'>books</a></li>
+<li><a href='electronics.html'>electronics</a></li>
+<li><a href='movies.html'>movies</a></li>
+<li><a href='recipes.html'>recipes</a></li>
+<li><a href='running.html'>running</a></li>
+</ul>
+</section>
+<section>
+<h2>posts&nbsp;</h2>
+<ul class='nobull capital'>
+<li><a href='bent_data.html'>bent_data</a></li>
+<li><a href='esolangs.html'>esolangs</a></li>
+<li><a href='iceland.html'>iceland</a></li>
+<li><a href='lightning.html'>lightning</a></li>
+<li><a href='ml_basics.html'>ml_basics</a></li>
+<li><a href='people.html'>people</a></li>
+<li><a href='rat_race.html'>rat_race</a></li>
+<li><a href='thesis.html'>thesis</a></li>
+</ul>
+</section>
+<section>
+<h2>meta&nbsp;</h2>
+<ul class='nobull capital'>
+<li><a href='about.html'>about</a></li>
+<li><a href='meta-meta.html'>meta-meta</a></li>
+<li><a href='myself.html'>myself</a></li>
+<li><a href='resume.html'>resume</a></li>
+<li><a href='tools.html'>tools</a></li>
+</ul>
+</section>
+<section>
+<h2>timeline&nbsp;</h2>
+<ul class='nobull capital'>
+<li><a href='2022.html'>2022</a></li>
+<li><a href='2023.html'>2023</a></li>
+<li><a href='2024.html'>2024</a></li>
+<li><a href='changes.html'>changes</a></li>
+<li><a href='current.html'>current</a></li>
+<li><a href='svanne.html'>svanne</a></li>
+</ul>
+</section>
+<section><ul class='nobull capital'></section>
+</details></nav>
+<!-- Generated file, do not edit -->
+<main>
+    <figure><img src="../media/refs/vindauga_logo.svg" ></figure>
+    <h2>It's Fun to Point-and-Click</h2>
+    <a href="vindauga_log.html">dev log</a>
+    <p>Vindauga is a point-and-click adventure framework built upon the SDL2 library using C. It employs a struct-based application mangement system, allowing for easy manipulation of the game renderer. PNG and GIF image formats are supported and a custom debugging option makes positioning and tuning clickable patterns a breeze. Text rendering is also supported via the SDL_ttf library. A simple history data object tracks how the player has navigated through the storyboard, enabling optimized backwards navigation.</p>
+    <p>The Vindauga dev log is written using the <code>.mrr</code> file format and <a href="myrr.html">myrr</a> interpretation paradigm.</p>
+    <figure><img src="../media/refs/vindauga.png"></figure>
+    <p>I developed Vindauga over the course of several weeks in mid 2025. It originally meant to be a way for me to make my <a href="534C.html">pixel art</a> interactive. I have several storylines that I have built up and made 128x128 pixel images for but did not have an effective way to bring them to life. I am not a particularly skilled writer, and I dont know how to eficiently animate, but I figured I can tell a compelling story or at least capture an audience, with some still images and clickable elements accompanied by a line of text or two. And Vindauga was born. Vindauga is extremely lightweight, with a memory footprint dictated largely by the size of the music and image files you want to use.</p>
+<p>
+    <pre>
+    typedef struct
+    {
+        SDL_Renderer *renderer;
+        SDL_Window   *window;
+        Delegate	 delegate;
+        Mouse		 mouse;
+    } App;
+    </pre>
 </p>
-<p><figure><img src='../media/refs/girlBox.png'style='height:250px;'/></figure></p>
-<p><b>03I03</b> - I have the basic structure and flow of the game established now. It will be a point-and-click style exploration game where scences can be discovered and observed. Each scene will be a low-res 1bit image (currently 128x128) with two states to give an sense of movement and life.
-</p>
-<p>There's a few things I know will have to be developed quickly and soon to make the game fully functional. At the moment, right-clicking sends the player back to the starting Scene (0) regardless of what Scene they are in. Once the Storyboard gets anything more than one level deep, I will need to be able to keep track of the player's path, which Scenes they have been to and in which order in order to navigate backwards. The easiest thing I can think of is a simple array that I append each Scene ID to and pop Scene IDs off whenever the user navigates backwards, that way the tail of the array is always the current Scene. I say "simple array" but of course when working with C there are complications. I'll have to program my own <code>append()</code> and <code>pop()</code> functions from scratch. Maybe there's an easier way to do this? For now, I will try this and learn along the way. There's some other considerations nesteled within this effort as well: what if I want to keep track of Scene-based player states? Say the player talks to a character and that action changes something about the Scene (requiring a render of a distinct image file), how do I keep track of that once the user navigates away? Sounds like the job for a Scene struct. But, before I get too carried away and frozen by the mountains of new things to learn, let's keep things basic.
-</p>
-<p>Another thing I am thinking about is the music and how it is handled. Right now, the music is loaded and called to play once, during the game initialization. If I want to play Scene-specific music, I'll need a way to call music loads and plays from within the game loop without repeatedly calling them every frame. Not sure how to do this, <del>but I suspect I will be able to monitor the music Channels to see if anything is currently playing and choose not to reinitialize. </del>Actually since I only trigger the change of Scene at most once per loop and only if the mouse click conditions are met, I think I can simply embed this directly within the game loop. The music would just restart each time a new scene is loaded though.
-</p>
-<p>Finally (for now) I want to add a transition between Scenes, something like a fade out/in to/from black. Again, no idea how to do this but my assumption is that something to this effect already exists within SDL.
-</p>
-<p><figure><img src='../media/refs/vindauga.png'style='height:250px;'/></figure></p>
-</body></html>
+    <p>I realized after the fact that Vindauga need not be only used for pixel art adventures. It could also be used for interactive photo albums. I am quite excited to try this out when I come back from a long trip. I wonder what else this tool could be used for...</p>
+    <p>On a side note, the sustained and intense enjoyment I experienced throughout the development process was largely due to a weekly show-and-tell held between myself an a few friends. Call it a developer's support group. I want to use Vindauga as evidence to others that giving yourself the opportunity to be held accountable by your peers can be an incredibly effective motivator. It's fun to talk about yourself whether it's showing off what you've accomplished in a week, or what you've broken or made worse. Weekly meetups also give you a chance to set small attainable goalsfor what you expect to show the next week. No longer do you need to be bogged down in trying to figure out how you're going to perfect your entire project, you just need to do a single thing: "figure out how to render text to the screen", "prove I can click on an enemy and make it do something". With Vindauga I felt several times during development that I otherwise would have stopped and given up if it weren't for the expectation that I have something to show at the end of the week. I encourage all developers to try out something like this, I can attest it works!</p>
+    <h3>TODOs</h3>
+    <ul>
+        <li>options to compile to MacOs or Windows executables</li>
+        <li>Scene state management</li>
+    </ul>
+</main><footer><hr /><b>Sean C. Lewis</b> © 2025 — <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank'>BY-NC-SA 4.0</a> — Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — Compatible with <a href='https://github.com/seanlabean/PythonProjects/tree/master/Biscuit'>BISCUIT</a></footer></body></html>

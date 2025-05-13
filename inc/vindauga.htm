@@ -2,5 +2,29 @@
 category: projects
 ---
 <main>
-dummy file, gets overwritten by build.sh from external/
+    <figure><img src="../media/refs/vindauga_logo.svg" ></figure>
+    <h2>It's Fun to Point-and-Click</h2>
+    <a href="vindauga_log.html">dev log</a>
+    <p>Vindauga is a point-and-click adventure framework built upon the SDL2 library using C. It employs a struct-based application mangement system, allowing for easy manipulation of the game renderer. PNG and GIF image formats are supported and a custom debugging option makes positioning and tuning clickable patterns a breeze. Text rendering is also supported via the SDL_ttf library. A simple history data object tracks how the player has navigated through the storyboard, enabling optimized backwards navigation.</p>
+    <p>The Vindauga dev log is written using the <code>.mrr</code> file format and <a href="myrr.html">myrr</a> interpretation paradigm.</p>
+    <figure><img src="../media/refs/vindauga.png"></figure>
+    <p>I developed Vindauga over the course of several weeks in mid 2025. It originally meant to be a way for me to make my <a href="534C.html">pixel art</a> interactive. I have several storylines that I have built up and made 128x128 pixel images for but did not have an effective way to bring them to life. I am not a particularly skilled writer, and I dont know how to eficiently animate, but I figured I can tell a compelling story or at least capture an audience, with some still images and clickable elements accompanied by a line of text or two. And Vindauga was born. Vindauga is extremely lightweight, with a memory footprint dictated largely by the size of the music and image files you want to use.</p>
+<p>
+    <pre>
+    typedef struct
+    {
+        SDL_Renderer *renderer;
+        SDL_Window   *window;
+        Delegate	 delegate;
+        Mouse		 mouse;
+    } App;
+    </pre>
+</p>
+    <p>I realized after the fact that Vindauga need not be only used for pixel art adventures. It could also be used for interactive photo albums. I am quite excited to try this out when I come back from a long trip. I wonder what else this tool could be used for...</p>
+    <p>On a side note, the sustained and intense enjoyment I experienced throughout the development process was largely due to a weekly show-and-tell held between myself an a few friends. Call it a developer's support group. I want to use Vindauga as evidence to others that giving yourself the opportunity to be held accountable by your peers can be an incredibly effective motivator. It's fun to talk about yourself whether it's showing off what you've accomplished in a week, or what you've broken or made worse. Weekly meetups also give you a chance to set small attainable goalsfor what you expect to show the next week. No longer do you need to be bogged down in trying to figure out how you're going to perfect your entire project, you just need to do a single thing: "figure out how to render text to the screen", "prove I can click on an enemy and make it do something". With Vindauga I felt several times during development that I otherwise would have stopped and given up if it weren't for the expectation that I have something to show at the end of the week. I encourage all developers to try out something like this, I can attest it works!</p>
+    <h3>TODOs</h3>
+    <ul>
+        <li>options to compile to MacOs or Windows executables</li>
+        <li>Scene state management</li>
+    </ul>
 </main>
