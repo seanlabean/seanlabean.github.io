@@ -5,8 +5,29 @@ category: timeline
 <h1>Change Log</h1>
 <p>This log uses the <a href="svanne.html">Svannic</a> date format.</p>
 <!--
-
+03J Notes: Vindauga improvements (scene memory, music, text rendering, memory leak, debug viz)
+03K Notes: Taiwan/China!
 -->
+<h3>03K</h3>
+<article>
+<p>
+    We traveled to Asia. Two weeks abroad exploring and visiting family in Taiwan and China. This was an incredible and demanding experience that I will remember forever. I have a lot of work ahead of me to curate my photography and make a Vindauga zine and blog post. The most lasting effects of this trip will certainly be my resolution to learn Mandarin. I want to be professionally fluent in 7 years.
+</p>
+<p>
+    <ul>
+        <li>Taipei City, Taiwan</li>
+        <li>Beijing, China</li>
+        <li>Xi'an, China</li>
+    </ul>
+    <figure><img src="../media/mandarin/nihao.png" style="width:150px;"/></figure>
+</p>
+</article>
+<h3>03J</h3>
+<article>
+    <p><a href="vindauga.html">Vindauga</a> has come a long way and I am pleased to report that it has reached a final draft of sorts. I imagine I will be adding many features to it and refactoring some of the clutter for many months to come but the core functionality is there. A few of the final core components were: scene memory - the ability to navigate backards through previously visited scenes, music, text rendering, clickable visualization with debug switch. I was also able to find a memory leak which was causing the footprint to grow linearly with time. One of the first enhancements I intend to make is to dynamically load the scene images only when they are navigated to, at the moment all images are loaded once at the start of the program. 
+    </p>
+    <p>Otherwise we are scambling to prepare for our major adventure of the year: a 2-week trip to Taiwan and China! Very excited for this.</p>
+</article>
 <h3>03I</h3>
 <article>
     <p>I've been working hard on my point-and-click SDL2 game. So far so good! It's been incredibly rewarding to meet weekly with the boys, it has been keeping my progress steady. And it's also cool to see what other people are working on and how they flex their skills to make something interesting. I comfortably created a little scene where clicking on a region displays a new image, right clicking returns you to the starting image, all while some atmospheric music plays in the background. I hit a couple snags trying to flesh the system out into something fully extensible, I am currently trying to figure out a way to track what image the player is currently looking at and what they were previously looking at so that right-clicking takes you back to that image, not just to the starting image. The boys had a good suggestion of using a tree structure of some sort. I am calling the game vindauga, old-norse for "wind's eye", which was subsumed into the English language as "window". I've been keeping a log of all my developments, using my forth-based HTML parser <a href="myrr.html">myrr</a>. You can read the blog <a href="vindauga.html">here</a>.</p>
