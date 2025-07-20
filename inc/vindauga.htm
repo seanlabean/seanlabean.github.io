@@ -7,8 +7,8 @@ category: projects
     <a href="vindauga_log.html">dev log</a>
     <p>Vindauga is a point-and-click adventure framework built upon the SDL2 library using C. It employs a struct-based application mangement system, allowing for easy manipulation of the game renderer. PNG and GIF image formats are supported and a custom debugging option makes positioning and tuning clickable patterns a breeze. Text rendering is also supported via the SDL_ttf library. A simple history data object tracks how the player has navigated through the storyboard, enabling optimized backwards navigation.</p>
     <p>The Vindauga dev log is written using the <code>.mrr</code> file format and <a href="myrr.html">myrr</a> interpretation paradigm.</p>
-    <figure><img src="../media/refs/vindauga.png"></figure>
-    <p>I developed Vindauga over the course of several weeks in mid 2025. It originally meant to be a way for me to make my <a href="534C.html">pixel art</a> interactive. I have several storylines that I have built up and made 128x128 pixel images for but did not have an effective way to bring them to life. I am not a particularly skilled writer, and I dont know how to eficiently animate, but I figured I can tell a compelling story or at least capture an audience, with some still images and clickable elements accompanied by a line of text or two. And Vindauga was born. Vindauga is extremely lightweight, with a memory footprint dictated largely by the size of the music and image files you want to use.</p>
+    <figure><img src="../media/refs/vindauga.png" style="float:right;width:40%;"></figure>
+    <p>I developed Vindauga over the course of several weeks in mid 2025. It originally meant to be a way for me to make my <a href="534C.html">pixel art</a> interactive. I have several storylines that I have built up and made 128x128 pixel images for but did not have an effective way to bring them to life. I am not a particularly skilled writer, and I dont know how to eficiently animate, but I figured I can tell a compelling story or at least capture an audience, with some still images and clickable elements accompanied by a line of text or two. And Vindauga was born. Vindauga is extremely lightweight, with a memory footprint dictated largely by the size of the music and image files you want to use. During initialization, all images and audio are loaded in a cached buffer which is then read whenever needed (e.g. the user clicks to the next image). This provides a trade-off of a few seconds of load-time during the initialization step in exchange for instantaneous responsiveness and zero load times while cycling through images. I've also programmed a rudimentary navigation history which tracks the user's image viewing history via their individual ids so the user can hop backwards through their view-path. </p>
 <p>
     <pre>
     typedef struct
@@ -18,13 +18,41 @@ category: projects
         Delegate	 delegate;
         Mouse		 mouse;
     } App;
+
+    int history[MAX_HISTORY];
+    int history_top = 0;
+
+    void push_scene(int oldScene) {
+        if (history_top < MAX_HISTORY) {
+            history[history_top++] = oldScene;
+        }
+    }
+
+    int pop_scene(void) {
+        if (history_top > 0) {
+            return history[--history_top];
+        }
+        else {
+            return 0;
+        }
+    }
     </pre>
 </p>
-    <p>I realized after the fact that Vindauga need not be only used for pixel art adventures. It could also be used for interactive photo albums. I am quite excited to try this out when I come back from a long trip. I wonder what else this tool could be used for...</p>
-    <p>On a side note, the sustained and intense enjoyment I experienced throughout the development process was largely due to a weekly show-and-tell held between myself an a few friends. Call it a developer's support group. I want to use Vindauga as evidence to others that giving yourself the opportunity to be held accountable by your peers can be an incredibly effective motivator. It's fun to talk about yourself whether it's showing off what you've accomplished in a week, or what you've broken or made worse. Weekly meetups also give you a chance to set small attainable goalsfor what you expect to show the next week. No longer do you need to be bogged down in trying to figure out how you're going to perfect your entire project, you just need to do a single thing: "figure out how to render text to the screen", "prove I can click on an enemy and make it do something". With Vindauga I felt several times during development that I otherwise would have stopped and given up if it weren't for the expectation that I have something to show at the end of the week. I encourage all developers to try out something like this, I can attest it works!</p>
+
+<h2>Vindauga Variants</h2>
+    <p>One of the (many) benefits of writing your own software is you grant yourself the gift of creative freedom. When you know how all the pieces of your toy fit together AND how each piece was constructed at its most basic level, it becomes extremely easy to dream up new variants of those pieces and fun new ways to fit them together. One of the I realized after the fact that Vindauga need not be only used for pixel art adventures. It could also be used for interactive photo albums. Or picture books. Or interactive text adventures. Who knows what else! I do not know yet how to catagorize or showcase these variants, for now I will note them here and store them as branches of the main Vindauga repo.</p>
+
+<h3>PA-Vindauga (Photo Album Variant)</h3>
+<p><figure><img src="../media/refs/vindauga_photoalbum.png" style="width:40%;float:right;"/></figure></p>
+<p>The photo album variant of Vindauga leverages SDL2 text rendering bindings as well as my existing cached image data pipeline to create linked image-caption pairs. The majority of the Vindauga code remains intact here, the main change is the windowing ratio to make room for the caption text. There are a few restrictions for this Variant: image dimension ratio and image memory size. The SDL2 image renderer fits the image to the Vindauga window dimensions and does not attempt to adjust for odd-sized images, if the input images are not of the correct proportion, they will be stretched/squished to fit the window. As mentioned previously, including many large-memory images will result in an increased initialization time.</p>
+<h3>SB-Vindauga (Storybook Variant)</h3>
+<p>The storybook variant reformats the organization of the Vindauga window to accomodate a column-based text/image structure. It builds upon the SDL2 text rendering bindings and adds an external configuration file to feed in text. Stay tuned for updates on this Variant, as it opens a new creative avenue for me: poetry!</p>
+
+<h2>A note on show-and-tells</h2>
+    <p>The sustained and intense enjoyment I experienced throughout the development process was largely due to a weekly show-and-tell held between myself an a few friends. Call it a developer's support group. I want to use Vindauga as evidence to others that giving yourself the opportunity to be held accountable by your peers can be an incredibly effective motivator. It's fun to talk about yourself whether it's showing off what you've accomplished in a week, or what you've broken or made worse. Weekly meetups also give you a chance to set small attainable goalsfor what you expect to show the next week. No longer do you need to be bogged down in trying to figure out how you're going to perfect your entire project, you just need to do a single thing: "figure out how to render text to the screen", "prove I can click on an enemy and make it do something". With Vindauga I felt several times during development that I otherwise would have stopped and given up if it weren't for the expectation that I have something to show at the end of the week. I encourage all developers to try out something like this, I can attest it works!</p>
     <h3>TODOs</h3>
     <ul>
         <li>options to compile to MacOs or Windows executables</li>
-        <li>Scene state management</li>
+        <li>loading images and text dynamically via config file</li>
     </ul>
 </main>
