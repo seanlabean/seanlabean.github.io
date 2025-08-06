@@ -65,7 +65,7 @@
 </details></nav>
 <!-- Generated file, do not edit -->
 <main>
-    <figure><img src="../media/refs/vindauga_logo.svg" ></figure>
+    <div align="center"><figure><img src="../media/refs/vindauga_logo.svg" ></figure></div>
     <h2>It's Fun to Point-and-Click</h2>
     <a href="vindauga_log.html">dev log</a>
     <p>Vindauga is a point-and-click adventure framework built upon the SDL2 library using C. It employs a struct-based application mangement system, allowing for easy manipulation of the game renderer. PNG and GIF image formats are supported and a custom debugging option makes positioning and tuning clickable patterns a breeze. Text rendering is also supported via the SDL_ttf library. A simple history data object tracks how the player has navigated through the storyboard, enabling optimized backwards navigation.</p>
@@ -109,6 +109,7 @@
 <p><figure><img src="../media/refs/vindauga_photoalbum.png" style="width:40%;float:right;"/></figure></p>
 <p>The photo album variant of Vindauga leverages SDL2 text rendering bindings as well as my existing cached image data pipeline to create linked image-caption pairs. The majority of the Vindauga code remains intact here, the main change is the windowing ratio to make room for the caption text. There are a few restrictions for this Variant: image dimension ratio and image memory size. The SDL2 image renderer fits the image to the Vindauga window dimensions and does not attempt to adjust for odd-sized images, if the input images are not of the correct proportion, they will be stretched/squished to fit the window. As mentioned previously, including many large-memory images will result in an increased initialization time.</p>
 <h3>SB-Vindauga (Storybook Variant)</h3>
+<p><figure><img src="../media/refs/vindauga_storybook.png" style="width:40%;float:right;"/></figure></p>
 <p>The storybook variant reformats the organization of the Vindauga window to accomodate a column-based text/image structure. It builds upon the SDL2 text rendering bindings and adds an external configuration file to feed in text. Stay tuned for updates on this Variant, as it opens a new creative avenue for me: poetry!</p>
 
 <h2>A note on show-and-tells</h2>
