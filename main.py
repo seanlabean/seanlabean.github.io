@@ -101,7 +101,7 @@ def write_footer(fn, proc=True):
         return
     with open(DEST+'/'+fn+'.html', 'a') as f:
         f.write("<footer><hr />")
-        f.write("<b>Sean C. Lewis</b> © 2025 — ")
+        f.write("<b>Sean C. Lewis</b> © 2026 — ")
         f.write("<a href='" + LICENSE + "' target='_blank'>BY-NC-SA 4.0</a> — ")
         f.write("Assembled using <a href='https://github.com/seanlabean/astrea'>Astrea</a> — ")
         f.write("Compatible with <a href='https://github.com/seanlabean/PythonProjects/tree/master/Biscuit'>BISCUIT</a>")
